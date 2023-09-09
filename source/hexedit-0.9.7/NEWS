@@ -1,0 +1,19 @@
+   I'm making a list of things I need to do here so I don't forget.
+
+   - Redo input processing.  In multiple places I get input and do
+     basically the same thing each time.  Make one generic routine to
+     process input.
+   - Redo Search popup window.  It's ugly, and I don't feel I can add 
+     seach/replace without changing it enough that re-writing it would
+     be easier.  
+   - Use the new generic popupError window for errors, since I use this
+     all over the place, and it all is basically cut and paste.
+   - Fix Help screen so that resizing window works.
+
+-------------------------------------------------------------------------
+  As of version 0.9.3, Viewing and editing fixed disks under Linux works!
+Currently, this is only for disks up to 4.2 gigs, but this is being worked
+on.  It works on OpenBSD as well.
+  I'm still looking for more stories on how hexedit saved the day,
+especially situations where hexedit was just a small part of a larger
+solution.  I want to include these in the manual.  

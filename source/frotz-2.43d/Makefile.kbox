@@ -1,0 +1,18 @@
+all:
+	make -f Makefile
+	mkdir -p image/usr/bin
+	cp -p frotz image/usr/bin
+	arm-linux-androideabi-strip image/usr/bin/frotz
+	mkdir -p out
+	tar cfz out/data.tar.gz -C image "." 
+	tar cfz out/control.tar.gz ./control 
+	echo "2.0" > out/debian-binary
+	rm -f frotz_2.4.3_kbox.deb
+	ar rcs frotz_2.4.3_kbox.deb out/debian-binary out/data.tar.gz out/control.tar.gz 
+	cp frotz_2.4.3_kbox.deb ../../out
+
+clean:
+	make -f Makefile clean
+	rm -rf image/
+	rm -rf out/
+	rm -f *.deb

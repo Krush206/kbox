@@ -1,0 +1,3 @@
+__statfs.lo: __statfs.c ../config.h
+
+../config.h:

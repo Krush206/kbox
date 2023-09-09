@@ -1,0 +1,3 @@
+mknodat.lo: mknodat.c ../config.h
+
+../config.h:

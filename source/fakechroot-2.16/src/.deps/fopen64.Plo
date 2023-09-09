@@ -1,0 +1,3 @@
+fopen64.lo: fopen64.c ../config.h
+
+../config.h:

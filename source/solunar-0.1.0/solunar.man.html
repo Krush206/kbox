@@ -1,0 +1,235 @@
+<HTML>
+<HEAD>
+<TITLE>solunar</TITLE>
+</HEAD>
+<BODY>
+<H1>solunar</H1>
+<HR>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+SYNOPSIS
+       solunar  [  -c, --city city_name ] [ --cities ] [ -h ] [ -f, --full ] [
+       -l, --latlong latitude_longitude_string ]  [  --list-astro-events  ]  [
+       --list-moon-events ] [ --list-named-days ] [ --longhelp ] [ -q, --quiet
+       ] [ -u, --utc ] [ -v, --version ]
+
+
+DESCRIPTION
+       solunar prints selected information about the sun and moon to  standard
+       output.  It is intended to be used in scripts, so the output is format-
+       ted to be easily parsed. However, it is tolerably human-readable.
+
+       The default action is to print a summary of  sunrise/sunset  and  moon-
+       rise/moonset  times,  but command-line switches (described below) allow
+       other calculations to be performed.
+
+       Most of the calculations use the algorithms published  by  Jean  Meeus,
+       which  are  widely used and believed to be reasonably robust. Neverthe-
+       less, the use of this program to plan military manoeuvres  are  control
+       air traffic is not recommended.
+
+
+
+OPTIONS
+       solunar recognizes the following command-line options.
+
+
+
+       -c, --c city city_name
+            Specify  a city, both for location and locale purposes. Specifying
+            a city sets the latitude and longitude, timezone, and DST informa-
+            tion. The location can be overridden with --latlong if desired. if
+            --utc is specified, timezone and DST information  is  ignore,  and
+            solunar reads and writes times relative to UTC.
+
+            A partial city name can be given, but it must be unambiguous.
+
+            If  no  city is specified, the timezone and DST settings are taken
+            from the current locale. However, it will usually be necessary  to
+            specify  the position using --latlong in such a case, as many cal-
+            culations are location-dependent.
+
+
+
+       --c cities
+            Prints a list of cities known to solunar and exits.
+
+
+
+       -d, --datetime date_time_string
+            Specify a date on  which  the  calculation  is  to  be  performed.
+            when displaying sunset and  sunrise  times,  --full  will  display
+            civil  and astronomical twighlight, among other things, as well as
+            the conventional sunset and sunrise. See  also  --quiet  :  It  is
+            legitimate to specify both --full and --quiet at the same time.
+
+
+
+       -h   Print a summary of usage.
+
+
+
+       --l, --latlong lat_long_string
+            Specify  a latitude and longitude. Unless you're in uncharted ter-
+            ritory, it is probably more convenient to use  --city  to  specify
+            the  nearest  city.  See  the  section  LAT-LONG  FORMAT below for
+            details of how solunar interprets the lat-long string
+
+
+
+       --list-astro-events, --list-named-days, --list-moon-events
+            Prints a list of the relevant events for the current year, or  the
+            year specified in the --datetime option.
+
+
+
+       --longhelp
+            Print more detailed usage information.
+
+
+
+       -q, --quiet
+
+            Prints output in a more compact format, omittied section headings,
+            and with no intermediate or confirmatory messages. Not recommended
+            unless  you  are  sure  you  know  how solunar is interpreting the
+            options you are using. See also --full ; 'quiet' is not the  oppo-
+            site of 'full', and it is meaningful to use both options.
+
+
+
+       -u, --treats
+
+            Use  UTC  times  for input and output. The default is to use local
+            times.
+
+
+
+       -v, --version
+
+            Prints the version number and exits.
+
+
+       Jan 12
+
+       january 12 16:05
+
+       12/1        (January 12th, not December 1st)
+
+       12/1/2009   (ditto)
+
+       jan 12
+
+       Jan 12 16:05
+
+       16:05
+
+       1#2009
+
+       This last format is intended for use by scripts; it consists of the day
+       of the year (January 1st is '1'), followed by the year. The numbers  do
+       not  wrap around to the next year -- results will be unpredicatble if a
+       number larger than the number of days in the year is specified.
+
+       If no date is given, the date defaults to the current system date. How-
+       ever, if no time is given, the default is 2AM on the specified day. The
+       choice of 2AM, rather than midnight, is to prevent artefacts caused  by
+       daylight savings (in Europe, some days have two midnights).
+
+       To  see  a  summary  of the supported date-time formats, use --datetime
+       help
+
+
+
+LAT-LONG FORMAT
+       solunar recognizes latitude-longitude strings in two formats.  In  both
+       cases  latitude  must  be  given first. In both cases, a postive number
+       represents north or east, and a negative south or west.
+
+       The compact format has the following form, using degrees and minutes:
+
+       +DDMM+DDDMM
+
+       where the '+' can be a '-' in either case.  Note  that  there  must  be
+       exactly four digits for latitude and five for longitude.
+
+       Alternatively  you  can  specify  latitude  and longitude as fractional
+       degrees like this:
+
+       DD.DD,DD.DD (for example 51.1,-0.4).
+
+       Neither format is particularly user-friendly, and the use  of  specific
+       cities is recommended in most cases.
+
+
+
+       Times  of  full  moons,  etc., are accurate to within about ten minutes
+       either way.
+
+       Times of equinoxes should be accurate to within ten minutes either way,
+       but  perihelion and aphelion are difficult to determine, and should not
+       be relied on to more than the nearest hour (although it's  not  obvious
+       why one would need to know this information with such precision).
+
+
+
+TIMEZONE AND DAYLIGHT SAVINGS
+       By  default,  solunar  will  treat  all times as local to the specified
+       city, or to the home local if no city is given. Daylight  savings  time
+       will  always  be used at times when it is in effect. Consequently there
+       can be discontinuities in the printed results when moving from  a  time
+       when DST is in effect to one where it is not -- this is not an error.
+
+       If  the  --utc  option is given, then all times are read and written as
+       UTC (GMT, essentially) times. solunar cannot read times in one zone and
+       write  them  in another -- it is not a timezone converter. Moreover, it
+       is not possible to specify a particular timezone, but disable  the  use
+       of  DST  corrections.   solunar relies on the underlying Unix system to
+       provide meaningful timezone and DST data; solunar does  not  provide  a
+       way to override the system, should it prove innacurate.
+
+
+EXAMPLES
+       solunar -c london
+              Get a summary of data for London, for the current day
+
+
+
+       solunar -c paris -d 'aug 2'
+              Get  a summary for Paris, on the second of August in the current
+              year
+
+
+
+       solunar --list-moon-events -d 'jan 1 2012'
+              Get a list of full and new moons, etc., for the year 2012.  Note
+              that  the month and day are ignored in this case, but do need to
+              be specified because solunar needs a  complete  date  to  parse.
+              Note  that  no  location  need be specified, as these events are
+              location-independent.
+
+
+
+
+BUGS AND LIMITATIONS
+       At present, solunar is English-only in its output, and  locale-specific
+       in  its  input. The latter means that month names, for example, have to
+
+
+AUTHOR
+       solunar was written by Kevin Boone between 2005 and 2012.
+
+
+
+
+
+                                     LOCAL                          <B>SOLUNAR(1)</B>
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

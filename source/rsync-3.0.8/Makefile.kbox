@@ -1,0 +1,17 @@
+all:
+	make -f Makefile
+	cp -pru contrib_image/* image/
+	cp -p rsync image/usr/bin
+	mkdir -p out
+	tar cfz out/data.tar.gz -C image "." 
+	tar cfz out/control.tar.gz ./control 
+	echo "2.0" > out/debian-binary
+	rm -f rsync_3.0.8_kbox.deb
+	ar rcs rsync_3.0.8_kbox.deb out/debian-binary out/data.tar.gz out/control.tar.gz 
+	cp rsync_3.0.8_kbox.deb ../../out
+
+clean:
+	make -f Makefile clean
+	rm -rf image/
+	rm -rf out/
+	rm -f *.deb

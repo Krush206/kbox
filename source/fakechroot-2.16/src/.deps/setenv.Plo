@@ -1,0 +1,3 @@
+setenv.lo: setenv.c ../config.h
+
+../config.h:

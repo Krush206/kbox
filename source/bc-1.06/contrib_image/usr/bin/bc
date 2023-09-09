@@ -1,0 +1,3 @@
+#!/system/bin/sh
+bc.bin $KBOX/usr/share/bc/libmath.b $KBOX/usr/share/bc/funcs.bc "$@"
+

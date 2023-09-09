@@ -1,0 +1,8 @@
+PS1=\\W\\$\ 
+
+if [ -z "$TERM" ]; then TERM=linux; fi
+TERMINFO=$KBOX/etc/terminfo
+PATH=$KBOX/usr/bin:$PATH
+export PS1 TERM TERMINFO PATH
+
+make_ssh_keys.sh

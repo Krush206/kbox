@@ -1,0 +1,3 @@
+getxattr.lo: getxattr.c ../config.h
+
+../config.h:

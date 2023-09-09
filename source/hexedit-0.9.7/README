@@ -1,0 +1,147 @@
+  Hexedit version 0.9.3 by Adam Rogoyski <apoc@laker.net> Temperanc on EFNet
+  Copyright (C) 1998, 1999 Adam Rogoyski
+
+  --- GNU General Public License Disclamer ---
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+
+        **   THIS IS NOT THE OFFICIAL DOCUMENTATION **
+  I forget to update this file.  The Texinfo or LaTeX documentation is what
+is really worth reading.  Look in docs/ direcotry.
+
+
+  Hexedit Version 0.9.3 is a full screen text mode Hex editor using the
+curses library.
+
+  Hexedit needs to be run in a screen with at least 80 columns or it will
+not look very good.  At least an 80x10 screen minimum.  It will look fine
+at any larger modes.  It should resize fine in an xterm.
+
+I've built and tested this on the following systems:
+   Linux 2.0.36 i386    ncurses 4.2 (gcc)
+   Linux 2.2.3  i386    ncurses 4.2 (gcc)
+   OpenBSD 2.4  i386    ncurses     (gcc)
+   SunOS 5.6    Sparc   curses      (gcc)
+   AIX 4.3.2    rs6000  curses      (gcc and cc)
+   AIX 4.3.2    ppc     curses      (gcc and cc)
+   DOS 6.22     i386    pdcurses    (djgpp gcc)
+   IRIX 6.3     mips    curses      (gcc)
+   HP-UX B.10.20        curses      (gcc)
+   SunOS 5.5.1  sparc   curses      (gcc)
+   OSF V4.0     alpha   curses      (gcc)
+
+
+COLOR:
+
+  SunOS/Solaris:
+     For color, try TERM=AT386, else vt100.
+
+  AIX Users:
+     You can use TERM=aixterm for color, but when not in X it seems
+     to get the colors mixed up.
+
+  LINUX USERS:
+     If the editor is not using the last line of the screen, you probably
+     didn't set your TERM environment to linux.
+     in bash:  export TERM=linux
+     in tcsh:  setenv TERM linux
+     Also try vt100 if linux doesn't work.  Color seems to work with
+     TERM=linux.
+   
+
+
+Controls:
+
+Maneuver            Arrow Keys (or h,j,k.l), Home, End
+Page Up             Control-y, Control-b, Alt-v, Page Up, u, y
+Page Down           Control-v, Control-f, Page Down, v, space
+Bytes <=> Text      Tab, Control-i
+Insert/Add Byte     Control-a, Insert
+Delete byte         control-d, Delete
+goTo Offset         Control-t, t
+Offset + Jump       +, -, n (jump again)
+Help                Control-g
+Redraw Screen       Control-l
+Save                Control-o
+Save and Quit       Control-x
+Quit (no save)      Control-c
+viEw as text        Control-e 
+Search              Control-w, w
+find Next           Control-n
+Undo                Control-u
+ASCII <=> EBCDIC    Control-R
+Switch Spacing      Control-P
+Binary Calculator   Control-/
+
+
+   NOTE: 
+     - For some commands, Control-x, Control-g and Escape are cancel.
+       Escape may take a second to work.  This is normal, it is how curses
+       works and deals with input I believe.  
+     - Viewing as text may seem messed up when looking at big binary
+       chunks (why do you want to view this as text anyways?), but 
+       it's fine.  When looking at binary in text, I had to decide how
+       to display files with little or no newlines so that text
+       portions look ok and the same each time.  So it looks back to the
+       last new line and starts from there.  So the part you may want
+       to look at may not even be on the screen.  To me, this isn't
+       a problem - It's a binary file, look at it in hex!  Also, all non
+       printable characters, even newlines, are represented as "." even
+       in the full screen text mode.
+       NOTE: This only takes a snapshot of the current section, you cannot
+       use this feature as a fileviewer of text.  It just lets you see
+       a quick snapshot of what it would like like in text.
+     - Goto Offset command takes input as either Hex (i.e. 0xFF), Octal
+       (i.e. 0377) or Base 10 (i.e. 255).  I know what you're thinking,
+       but no, strtol () does this for you.
+     - I put a few different ways to page up and down because most
+       people are used to vi or emacs.  I personally like how pico is
+       set up.  Any other resemblances to pico are purely my doing.
+     - Year 2000 compliant. =)
+     - Searching uses the Boyer-Moore search algorith, and the whole
+       file is in memory, so it's fast.  Real fast.
+     - Changes are highlighted in bold.  If you insert or delete a byte,
+       all bold is removed until you change something else.  This seems 
+       like the best thing to do here.  Or else I'd be highlighting all
+       the rest of the file.
+     - Undo: for undo, if the modified byte is on the screen, it is reverted
+       to it's previous state.  If it is not on the screen, you are brought
+       to the byte's location so it is viewable on the screen.  The next
+       Undo command will revert the byte back to it's previous state.
+     - Environment variable HEXEDIT can be used to save your command line
+       options.  Example, export HEXEDIT=-8r would put hexedit into
+       readonly mode with 8-bit printing on by default.
+
+BUGS - DRAWBACKS
+
+      - You currently can only edit files and disks up to 4.2 gigs.
+      - On SunOS if you use control-v for page down you have to do it
+        twice.  This has to do with the terminal driver interpreting
+        Control-v for it's purposes.  If there is a portable way to
+        changes this let me know.
+        *** I've been informed that this is a normal terminal driver thingy.
+        Still, how do I get around it?
+      - I've had different results with older versions of ncurses.  Tell
+        me if anything breaks.  It should work though.
+
+
+   If there are any problems and bugs please send me mail so I can fix 
+   them.  If you have any extra computer stuff, money, guitar stuff,
+   or anything Stevie Ray Vaughan that you don't want please contact me.
+
+
+   Shameless plugs:
+      Video Game Expresss! http://www.vgeonline.com
+      Lisa Loeb Web Shrine http://www.lisaloeb.org
+
+   Author:
+      Adam Rogoyski <apoc@laker.net>
+      As of January 1999, I am a sophomore of Computer Science at the
+      Univeristy of Texas at Austin.  

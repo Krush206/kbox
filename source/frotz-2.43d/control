@@ -1,0 +1,7 @@
+Package: frotz 
+Version: 2.4.3 
+Section: games 
+Priority: optional
+Architecture: arm
+Depends:
+Description: z-code interactive fiction interpreter 

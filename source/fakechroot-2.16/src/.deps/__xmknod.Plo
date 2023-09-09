@@ -1,0 +1,3 @@
+__xmknod.lo: __xmknod.c ../config.h
+
+../config.h:

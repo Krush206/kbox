@@ -1,0 +1,107 @@
+unlink.lo: unlink.c ../config.h libfakechroot.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/errno.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/cdefs.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/cdefs_elf.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/errno.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm/errno.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm-generic/errno.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm-generic/errno-base.h \
+ /home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/include-fixed/limits.h \
+ /home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/include-fixed/syslimits.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/limits.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/limits.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/limits.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/machine/internal_types.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/machine/limits.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/syslimits.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/stdlib.h \
+ /home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/include/stddef.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/string.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/malloc.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/alloca.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/strings.h \
+ /home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/include-fixed/sys/types.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/stdint.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/_types.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/machine/_types.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/posix_types.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/stddef.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/compiler.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm/posix_types.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm/types.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/types.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/machine/kernel.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/sysmacros.h \
+ /home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/memory.h
+
+../config.h:
+
+libfakechroot.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/errno.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/cdefs.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/cdefs_elf.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/errno.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm/errno.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm-generic/errno.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm-generic/errno-base.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/include-fixed/limits.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/include-fixed/syslimits.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/limits.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/limits.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/limits.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/machine/internal_types.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/machine/limits.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/syslimits.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/stdlib.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/include/stddef.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/string.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/malloc.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/alloca.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/strings.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/include-fixed/sys/types.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/stdint.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/_types.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/machine/_types.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/posix_types.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/stddef.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/compiler.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm/posix_types.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/asm/types.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/linux/types.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/machine/kernel.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/sys/sysmacros.h:
+
+/home/kevin/lib/android-9-toolchain/bin/../sysroot/usr/include/memory.h:

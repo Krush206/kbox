@@ -1,0 +1,789 @@
+This is Info file hexedit.info, produced by Makeinfo version 1.67 from
+the input file hexedit.texinfo.
+
+   [N]Curses Hexedit Manual
+
+   Copyright (C) 1999 Adam Rogoyski
+
+
+File: hexedit.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
+
+* Menu:
+
+* Introduction::	About hexedit, the author, and life in general.
+* Getting Started::	Getting hexedit, compiling, running.
+* Program Operations::	Program usage and commands.
+
+
+File: hexedit.info,  Node: Introduction,  Next: Getting Started,  Prev: Top,  Up: Top
+
+Introduction
+************
+
+* Menu:
+
+* What is Hexedit::           Brief intro to the program.
+* Copyright and License::     Terms of copying.
+* Author::                    Info about me.
+* Feedback and Bugs::         When to contact me.
+* Contributions::             Who's helped so far.
+
+
+File: hexedit.info,  Node: What is Hexedit,  Next: Copyright and License,  Up: Introduction
+
+What is Hexedit?
+================
+
+   *hexedit* is a Curses based Hex editor.  Unlike a text editor, which
+is used for editing text documents in the desired language, *hexedit*
+lets you edit any file as it's byte(1) for byte representation.  It can
+even let you view and edit your fixed disks on your Linux system.  This
+is not ideal for writing a letter or writing c code, but there are my
+times when this is ideal:
+
+   * Editing binary executables.
+
+   * Editing your fixed disks (i.e. /dev/hda)
+
+   * Checking the output of a Program's binary data file.
+
+   * Any place you might use od(1) but need more power.  Compare more
+     vs less.
+
+   * Any other time you find this useful (tell me).
+
+   ---------- Footnotes ----------
+
+   (1)  I assume a byte is an 8-bit octet.  If this is not the case, I
+really recommend NOT using this program.
+
+
+File: hexedit.info,  Node: Copyright and License,  Next: Author,  Prev: What is Hexedit,  Up: Introduction
+
+Copyright and License
+=====================
+
+   *[N]Curses Hexedit* Copyright (C) 1998,1999 Adam Rogoyski
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as publish by the
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+You should have received a copy of the GNU General Public License along
+with this program;  if not, write to the Free Software Foundation,
+Inc., 675 Mass Ave, Cambridge, MA 02139, USA
+
+
+File: hexedit.info,  Node: Author,  Next: Feedback and Bugs,  Prev: Copyright and License,  Up: Introduction
+
+Author
+======
+
+   *[N]Curses Hexedit* was written by Adam Rogoyski(1)(2).  At the time
+of writting (December 1998) I am a Sophomore of Computer Science at the
+University of Texas at Austin.  I use Debian GNU/Linux and OpenBSD, I
+enjoy playing electric guitar, and I currently reside Pflugerville,
+Texas USA.  My heroes are Richard Stallman, Stevie Ray Vaughan, and
+Lisa Loeb.
+
+   ---------- Footnotes ----------
+
+   (1)  Email me at apoc@laker.net
+
+   (2)  There is a picture of me at http://profiles.yahoo.com/rogoyski/
+
+
+File: hexedit.info,  Node: Feedback and Bugs,  Next: Contributions,  Prev: Author,  Up: Introduction
+
+Feedback and Bugs
+=================
+
+   Astounding as it may be, there quite possibly are bugs in *hexedit*.
+You can do your share to help Free Software(1) be robust and secure by
+telling me about any problems you find.  Patches are even better.
+General feedback is appreciated as well, if only to tell me that
+*hexedit* saved the day again, or that my obscure program wasted half
+your day when you already knew how to use emacs (M-x hexl-mode) in the
+first place.
+I can be reached at *apoc@laker.net*
+
+   ---------- Footnotes ----------
+
+   (1)  http://www.gnu.org/philosophy/free-sw.html
+
+
+File: hexedit.info,  Node: Contributions,  Prev: Feedback and Bugs,  Up: Introduction
+
+Contributions
+=============
+
+   The following people contributed valuable feedback and information
+   * John Gatewood Ham: Gave some tips for the documentation.
+
+   * Cort (unknown): Idea for Undo.
+
+   * Matt Noel: EBCDIC support and spacing.  Countless suggestions and
+     ideas.
+
+   * Everyone else who mailed me and told me things that broke and gave
+     suggestions.
+
+
+File: hexedit.info,  Node: Getting Started,  Next: Program Operations,  Prev: Introduction,  Up: Top
+
+Getting Started
+***************
+
+* Menu:
+
+* Obtaining Source::		Where to find hexedit.
+* Obtaining Binaries::		Where to find binaries.
+* Building from Source::	What to do to build hexedit.
+* Command Line Invocation::	starting from the shell.
+
+
+File: hexedit.info,  Node: Obtaining Source,  Next: Obtaining Binaries,  Up: Getting Started
+
+Obtaining Source
+================
+
+   The latest source tar'd and gzip'd can be obtained at
+*http://ccwf.cc.utexas.edu/~apoc/programs/c/hexedit/*
+and also from everyone's favorite ftp site
+*ftp://metalab.unc.edu/pub/Linux/apps/editors/terminal/*
+If you do not know what tar and gzip are, and are using a DOS derived
+OS, *Note Obtaining Binaries::.
+
+
+File: hexedit.info,  Node: Obtaining Binaries,  Next: Building from Source,  Prev: Obtaining Source,  Up: Getting Started
+
+Obtaining Binaries
+==================
+
+   Pre-compiled statically linked binaries can be obtained for the
+following operating systems: i386 Linux, i386 OpenBSD, and DOS.  The
+location for these is:
+*http://ccwf.cc.utexas.edu/~apoc/programs/c/hexedit/*
+
+   I've Built and tested hexedit on the following platforms:
+
+   * Linux 2.0.36 i386    ncurses 4.2 (gcc)
+
+   * Linux 2.2.6  i386    ncurses 4.2 (gcc)
+
+   * OpenBSD 2.4  i386    ncurses     (gcc)
+
+   * SunOS 5.6    Sparc   curses      (gcc)
+
+   * AIX 4.3.2    rs6000  curses      (gcc and cc)
+
+   * AIX 4.3.2    ppc     curses      (gcc and cc)
+
+   * DOS 6.22     i386    pdcurses    (djgpp gcc)
+
+   * IRIX 6.3     mips    curses      (gcc)
+
+   * HP-UX B.10.20        curses      (gcc)
+
+   * SunOS 5.5.1  sparc   curses      (gcc)
+
+   * OSF V4.0     alpha   curses      (gcc)
+
+
+File: hexedit.info,  Node: Building from Source,  Next: Command Line Invocation,  Prev: Obtaining Binaries,  Up: Getting Started
+
+Building from Source
+====================
+
+   Building from source should be very strait forward.  I used the GNU
+configure system (autoconf and automake) so, like any GNU compliant
+program, the sequence
+        ./configure
+        make
+        make install
+   should be all that's needed to install the package.  Additional
+options may need to be given to configure, check INSTALL for such
+options.
+
+i386 Linux
+----------
+
+   I extremely recommend you upgrade to ncurses 4.2 for hexedit to
+work.  It should work with all versions, but resizing in an xterm seems
+to work better with the newest release. The latest ncurses can be
+obtained at the nearest GNU ftp archive (or ftp://ftp.gnu.org/pub/gnu/).
+
+i386 OpenBSD
+------------
+
+   OpenBSD 2.4 I believe comes with ncurses, and it worked fine at my
+end.
+
+rs/6000 AIX 4.3
+---------------
+
+   I belive I've fixed the previous AIX problems I was having.  Let me
+know if anything else turns up.
+
+
+File: hexedit.info,  Node: Command Line Invocation,  Prev: Building from Source,  Up: Getting Started
+
+Command Line Invocation
+=======================
+
+   Basic program usage is as follows:
+     *hexedit* [*flags*] [*filename*]
+
+Where filename is the file which you wish to edit.  Additionally,
+starting the program with no file
+     *hexedit* [*flags*]
+
+will bring up the file selection widget which will allow you to browse
+for the file.  The command line arguments which are supported are
+-h, -help        Prints help.
+-8, -highbit     Allows displaying of high order bit text.
+-a, -alltext     Allows displaying of all text (probably bad idea).
+-b, -buffer      Buffer the entire file into memory.
+-d, -disk        View a fixed disk (Linux only).
+-f, -force       Allow editing of disk (Linux only).
+-q, -quiet       No Beeping!
+-r, -readonly    Prevents modifying the file.
+-v, -version     Prints version number.
+Defaults may be specified in the HEXEDIT environment variable, i.e.
+sh: *export HEXEDIT=-8r*
+csh: *setenv HEXEDIT=-8r*
+
+File: hexedit.info,  Node: Program Operations,  Prev: Getting Started,  Up: Top
+
+Program Operations
+******************
+
+* Menu:
+
+* Choosing a file::		How to select a file to edit.
+* Choosing a fixed disk::	How to select a fixed disk to view/edit.
+* Windows::			Descriptions of the various windows.
+* Moving About::		How to traverse the file.
+* Editing::			Editing procedures.
+* Undo::			Fixing mistakes.
+* Searching::			Locating specific strings.
+* Quit::			Exiting the editor.
+* Save::			Commiting changes to disk.
+* Save and Quit::		Commiting changes with exit.
+* Redraw::			Refreshing the screen.
+* View as Text::		Take an text snapshot of offset.
+* Ascii <=> EBCDIC::		Switch between text representations
+* Switch Spacings::		Change the way the bytes are grouped
+* Binary Calculator::		Base conversions.
+* Help::			Accessing online help.
+
+
+File: hexedit.info,  Node: Choosing a file,  Next: Choosing a fixed disk,  Up: Program Operations
+
+Choosing a file
+===============
+
+   Before editing can begin, you much select a file to edit.  This can
+be done on the command line:
+        hexedit filename
+   Quite possibly, you may not remember the location of the file you
+wish to edit, or you may wish to browse over many possible files
+availible to find the file you are looking for.  Hexedit comes equipted
+with a full screen file/directory browser which enables you to specify
+the file you wish to edit.  Not specifying any file on the command line:
+        hexedit
+   will bring up the file selection browser. Choosing (pressing enter)
+a directory will open that directory for viewing.  Choosing a file will
+open that file in the editor.
+
+
+File: hexedit.info,  Node: Choosing a fixed disk,  Next: Windows,  Prev: Choosing a file,  Up: Program Operations
+
+Choosing a fixed disk.
+======================
+
+   Hexedit, when run in Linux, permits access to read and edit fixed
+disks (i.e /dev/hda).  Using the *-d* option will allow you to edit a
+disk.  Currently, the disk can be only up to 4.2 gigs, but this will
+probably change in a future release.
+By default, editing a disk will put you in read-only mode.  This is for
+your own protection.  If you really think you know what you are doing,
+issue the *-f* flag and it will force edit mode for the disk and allow
+you to make changes to your disk.  Use this with *EXTREME CAUTION!*  If
+you make a mistake to your boot sector, erase a few important inodes,
+or hit the wrong keystroke, you could be seriously out of luck.  It is
+really easy to put your disk in an unusable state.  Also, remember that
+the disk could very well be changing as you look at it.  So the next
+time you view a chunk, it may be different, or even the chunk you are
+currently viewing may have changed on disk since you read it into the
+editor's buffer.  So be careful if you want to edit a mounted disk.
+To put this in another way, if you don't know exactly why you would
+want to use this option, *Never Use It!*  *IMPORTANT*:  Never use this
+in conjunction with the *-b* option to buffer the entier file into
+memory.  I will leave it to you to think why this would be bad.
+
+
+File: hexedit.info,  Node: Windows,  Next: Moving About,  Prev: Choosing a fixed disk,  Up: Program Operations
+
+Windows
+=======
+
+   The screen is made up of three windows, the *Status* window, the
+*Main* window, and the *Help* window.  A typical view would look
+something like this.
+     File: data.dat                  ASCII Offset: 0x00004250 / 0x000096BB (%44)
+     00004200  55 89 E5 53  8b 5D 08 A1   A8 0D 05 08  39 05 AC 0D  U..S.]......9...
+     00004210  05 08 0F 8C  8C 00 00 00   05 00 04 00  00 A3 A8 0D  ................
+     00004220  05 08 C1 E0  02 50 A1 B0   0D 05 08 50  E8 4B CB FF  .....P.....P.K..
+                                   .
+                                   .
+                                  etc
+                                   .
+                                   .
+     ^G Help   ^C Exit (No Save)   ^T goTo Offset   ^X Exit and Save   ^W Search
+
+   And so on.
+
+Status Window
+-------------
+
+   The Status Window is the first line of the screen.  At all times, it
+conveys the following information
+   *          *Filename* which you are working on
+
+   *          *Character Set* which you are using, ASCII or EBCDIC
+
+   *          *Current Offset* which you are at
+
+   *          *Size* of file
+
+   *          *Percent*age way through the file
+
+   *          *Modified Flag*: A M in the upper right corner signals
+     that the file has been                                 modified
+     since last save, or that the file is read-only
+
+   It typically looks like this
+     File: data.dat       ASCII Offset: 0x00004250 / 0x000096BB (%44)
+
+Main Window
+-----------
+
+   The Main Window is the bulk of your view. It is where all viewing
+and editing of the file takes place.  All cursor operations and
+movements take place within this window.  Operations within the Main
+Window are described in detail in section *Note Moving About::
+
+   The Main Window is broken up vertically into three columns of
+information.  The first column from the left is the base offset(1)
+which represents the offset of the first byte of that row in the Data
+column.
+
+   The second column is the Data column, where the Hexadecimal
+representation of each byte of the file is listed.  Each row consists
+of 16 bytes, seperated into 2 columns of 8 bytes, each seperated into
+columns of 4 bytes.  A typical row looks like: (third column not shown)
+     00004280   50 E8 A6 CA  FF FF E8 41   CA FF FF 68  90 F5 04 08
+
+   The third column of the main window is the text representation on
+that row's bytes.  Non printable characters are represented as a "."
+dot.
+
+Help Window
+-----------
+
+   The Help Window is the friendly reminder of basic commands within
+the editor.  It cannot be removed.
+
+Popup Windows
+-------------
+
+   Various commands may bring up a Popup Window.  This is a smaller
+window centered in the Main Window.  Various operations, such as
+Searching, Jumping to another offset, saving, etc.  require their own
+window, and will "Pop" one up.  *Escape*, *Control-X*, and *Control-G*
+can be used to cancel most Popup Windows.
+
+   ---------- Footnotes ----------
+
+   (1)  All offsets are in Hexadecimal (base16)
+
+
+File: hexedit.info,  Node: Moving About,  Next: Editing,  Prev: Windows,  Up: Program Operations
+
+Moving About
+============
+
+   Moving about the file is done through the full screen terminal
+interface.  Operations were meant to be easy to learn and comfortable
+to use.
+
+Hex <=> Text (Tab)
+------------------
+
+   The Main Window is composed of the hex and text representation of
+the file.  The cursor may be moved from one to the other by use of
+*Tab* or *Control-I*(1).  Being on the Hex representation will be
+called Hex Mode, with being on the text representation Text Mode.
+
+Arrow Keys
+----------
+
+   The arrow keys are the basic way to move about the file.  In Hex
+Mode, left and right shift you four bits in the file.  Going right, you
+could move to the lower 4 bits of the current byte (b & 0x0F), or move
+to the higher 4 bits of the next byte (b & 0xF0).  Left can bring you
+either to the higher 4 bits of the current byte, or to the lower bits
+of the previous byte.  Up and Down  move you 16 bytes (offset +- 0x10)
+through the file(2).
+
+   In Text Mode, left and right always move you one byte, with Up and
+Down moving you 16 bytes.
+
+Jumping
+-------
+
+   From your current offset, you can jump to an offset relative to
+where you are.  With the cursor in the hex data area, Pressing *+* or
+*-* will bring up a entry box in the help window, in which you can type
+in the amount to jump.  Depending on whether you did a plus or minus,
+you will traverse to *current offset* *+|-* *value*.  After the first
+jump, you can use the *n* key to continue to jump by that offset a
+multitude of times.
+
+Misc
+----
+
+   The following keys function as you'd expect them to
+   *          *Page Up* (also *Control-Y*, *Control-B*, *Alt-V*, *u*,
+     *y*)
+
+   *          *Page Down* (also *Control-F*, *Control-V*, *space*, *v*)
+
+   *          *Home*
+
+   *          *End*
+
+GoTo Offset
+-----------
+
+   At any time, you may jump to a specific offset of the file with
+*Control-T* or *t*.  This will bring up a Popup Window which will
+prompt you to enter the new file offset.  The new offset may be given in
+decimal(3), octal(4), or hex(5).
+
+   Note, the default value will be 0, permitting a fast way to jump to
+the begining of the file.
+
+   ---------- Footnotes ----------
+
+   (1)  Control-X signifies holding down the control key and hitting X
+
+   (2)  This isn't always true if you are near the end of the file
+
+   (3)  Decimal numbers are base10, ex: 255
+
+   (4)  Octal numbers are base8, prefixed by a 0, ex: 0377
+
+   (5)  Hex numbers are base16, prefixed by 0x, ex: 0xFF
+
+
+File: hexedit.info,  Node: Editing,  Next: Undo,  Prev: Moving About,  Up: Program Operations
+
+Editing
+=======
+
+   Editing is the primary(1) function of the editor.
+
+Modifying Bytes
+---------------
+
+Hex Mode
+........
+
+   In this mode, Characters 0-9 and A-F may be used to change the
+current byte.  All other characters are ignored.
+
+Text Mode
+.........
+
+   In this mode, any printable character may be used to change the
+current byte.
+
+Insert
+------
+
+   Insert allows you to, inplace, insert a new byte of data into the
+file, thus increasing the size of the file by one byte.  The new byte
+is always equal to zero until you modify it.  Insert is done through
+the *Insert* key or *Control-A*.  Insert is only enabled if you use the
+*-b* option to buffer the entire file into memory.  This is not
+something I will consider changing.  If you want to modify your copy to
+allow this, best of luck to you.  Insert cannot work on disks either.
+
+   To simulate appending a byte to the end of the file, Jump to the end
+of the file, and insert a byte.  This will have pushed the last byte
+over one.  Copy the value of that byte to the new zero'd byte.  Now
+zero the last byte.
+
+Delete
+------
+
+   Delete allows you to delete the current byte, shifting the remainder
+of the file back one, thus decreasing the size of the file by one byte.
+Delete is done through the *Delete* key or *Control-D*.  Delete will
+only work if you use the *-b* option to buffer the entire file into
+memory.  Same as with Insert, this is not going to change in a future
+release.  Usually, you can use dd(1) to get the part of the file/disk
+you want, insert and delete on that to your heart's content, and then
+dd that back to the file/disk.
+
+   If there is only one byte in the file, Delete will zero the byte,
+but you cannot reduce the file to zero bytes(2)
+
+   ---------- Footnotes ----------
+
+   (1)  This would make viewing the secondary function, perhaps.
+
+   (2)  I recommend rm(1) for this
+
+
+File: hexedit.info,  Node: Undo,  Next: Searching,  Prev: Editing,  Up: Program Operations
+
+Undo
+====
+
+   While editing a file, it is quite likely that you may make a
+mistake(1).  To facilitate this, an extensive Undo command has been
+implemented on your behalf.  *Control-U* Undoes the previous change to
+the file.  The editor keeps track of all modifications, insertions, and
+deletions.  What this means is that at any time you can, if you wish,
+revert the file back to it's original state by a series of Undo's.
+
+   If you do *Control-U* and the last changed byte is currently viewable
+in the Main Window, then the cursor will relocate to that byte and
+revert it to it's previous state.  If the last changed byte is not
+currently viewable, the currently viewable area will shift so that the
+changed byte is viewable.  In other words, you will be relocated to
+that part of the file, with the cursor on that byte at that offset.
+The Byte WILL NOT be Un-done.  Another *Control-U* will now undo the
+change(2).
+
+   ---------- Footnotes ----------
+
+   (1)  Or a typo, if you prefer
+
+   (2)  This is probably worded poorly, but it's easy to see what I
+mean when you try it
+
+
+File: hexedit.info,  Node: Searching,  Next: Quit,  Prev: Undo,  Up: Program Operations
+
+Searching
+=========
+
+   Searching allows you to quickly(1) locate a specific sequence of
+characters or bytes in the file.  *Control-W* or *w* brings up a Popup
+Window giving you the options of Find Next (*N*), Search for text
+string (*A*), and Search for Hex bytes (*H*).
+
+Search for Text String
+----------------------
+
+   This options allows you to search for specific character strings of
+text.  Spaces are allowed.
+
+Search for Hex Bytes
+--------------------
+
+   This options allows you to search for a specific string of bytes in
+the file.  The Popup Window has an entry box, which accepts a sequence
+of bytes in Hex (0-9, A-F), while it shows the text representation of
+those bytes above.  Non printable characters are shown as "." dot.
+
+Find Next
+---------
+
+   This options allows you to find the next occurence of the previous
+search (text or Hex).  This option is not availible until after your
+first search is completed.
+
+   This options is bound to *Control-N* to allow quickly locating the
+next match.
+
+   ---------- Footnotes ----------
+
+   (1)  The fast Boyer-Moore algorithm is used
+
+
+File: hexedit.info,  Node: Quit,  Next: Save,  Prev: Searching,  Up: Program Operations
+
+Quit
+====
+
+   Quiting without prompting to save is done by *Control-C*.  It will
+bring up a Popup Window to make sure of your decision to quit the
+program.
+
+
+File: hexedit.info,  Node: Save,  Next: Save and Quit,  Prev: Quit,  Up: Program Operations
+
+Save
+====
+
+   To save the file at any time with the currently made changes is done
+with *Control-O*(1).  The file may be saved over the current file(2),
+or you may save the file as a new or different file.  In the event of
+an error or inability to save, you will be given the standard(3) error
+message in the Popup Window.
+
+   ---------- Footnotes ----------
+
+   (1)  On OpenBSD and a few other OS's, This keystroke does not seem
+to work.  It has something to do with the terminal using it
+
+   (2)  This isn't always possible.  One place is in DOS if you try to
+save over the executable currently being ran
+
+   (3)  perror (filename)
+
+
+File: hexedit.info,  Node: Save and Quit,  Next: Redraw,  Prev: Save,  Up: Program Operations
+
+Save and Quit
+=============
+
+   To exit the program, saving the file as you go, use *Control-X*.  If
+the file has not been modified since the last save, the program will
+exit without saving.  If the file has been modified, you will be
+prompted for the filename to save to, which may be different than the
+current filename.  In the event of an error or inability to save, you
+will be given the standard error message in the Popup Window, and the
+program will resume operations without terminating.
+
+
+File: hexedit.info,  Node: Redraw,  Next: View as Text,  Prev: Save and Quit,  Up: Program Operations
+
+Redraw
+======
+
+   In the event that the terminal becomes unreadable, or for any other
+reason, the screen may be redrawn with *Control-L*.  This will only
+erase and redraw the screen.  If the terminal needs to be reset(1), the
+terminal will still need to be reset.
+
+   ---------- Footnotes ----------
+
+   (1)  By '/bin/echo "\033c"' perhaps
+
+
+File: hexedit.info,  Node: View as Text,  Next: Ascii <=> EBCDIC,  Prev: Redraw,  Up: Program Operations
+
+View as Text
+============
+
+   If at any time, you would like to see what the current file looks
+like as an text dump, *Control-E* will let you.  Note: This feature was
+intended for files which are mostly made up of text.  I implemented
+this by traveling back to the previous new line so that the text would
+be aligned how it would be in a text editor.  Because of this, in a
+file without any new lines for a long time, you may not be able to view
+certain parts of the file in this mode.  I do not see this as a
+problem, and I can recommend some really nice text editors for you if
+you disagree.  Just don't use this function(1).
+
+   This feature was meant to just show you a snapshot of the current
+section as text.  That's all it does, that's all it will do.
+
+   ---------- Footnotes ----------
+
+   (1)  Don't use this function.  Never use it.  I don't.
+
+
+File: hexedit.info,  Node: Ascii <=> EBCDIC,  Next: Switch Spacings,  Prev: View as Text,  Up: Program Operations
+
+Ascii <=> EBCDIC
+================
+
+   Some old IBM mainframes use EBCDIC instead of the ASCII character
+set.  To switch between which way the text is represented, *Control-R*
+will switch it.  If you don't know what this is, you probably should
+not use it.
+
+
+File: hexedit.info,  Node: Switch Spacings,  Next: Binary Calculator,  Prev: Ascii <=> EBCDIC,  Up: Program Operations
+
+Switch Spacings
+===============
+
+   Some people like having spaces between each byte, and between each 8
+bytes:
+     04 30 40 23  23 43 23 54   23 48 83 29  23 12 00 45
+   Some people like having the bytes grouped into four byte words:
+     04304023 23432354 23488329 23120045
+   To select which way you'd like to view the file as, use *Control-P*
+to switch the spacings around to the way you like it.
+
+
+File: hexedit.info,  Node: Binary Calculator,  Next: Help,  Prev: Switch Spacings,  Up: Program Operations
+
+Binary Calculator
+=================
+
+   A binary calculator is included which will let you convert between
+base2, base8, base10, and base16 easily.  This can be brought up with
+*Control-+*.  Currently, this doesn't have all the features I'd like to
+spend the time to put into it, but it still is quite useful.
+
+   Currently, all numbers in the calculator are represented in the
+machines default signed Integer size, a size which will be displayed in
+the status window.  This means that most likely setting the highest bit
+will lead to a negative number.  If I get time, unsigned ints as well
+as indefinite precision, and arithmetic functions will be added.
+
+
+File: hexedit.info,  Node: Help,  Prev: Binary Calculator,  Up: Program Operations
+
+Help
+====
+
+   At any time, *Control-G* may be used to get a list of commands for
+the editor.  The Help Window will also list some commonly used commands.
+
+
+
+Tag Table:
+Node: Top170
+Node: Introduction434
+Node: What is Hexedit812
+Node: Copyright and License1752
+Node: Author2625
+Node: Feedback and Bugs3259
+Node: Contributions3954
+Node: Getting Started4417
+Node: Obtaining Source4764
+Node: Obtaining Binaries5209
+Node: Building from Source6164
+Node: Command Line Invocation7239
+Node: Program Operations8279
+Node: Choosing a file9124
+Node: Choosing a fixed disk9923
+Node: Windows11379
+Node: Moving About14510
+Node: Editing17073
+Node: Undo19038
+Node: Searching20211
+Node: Quit21399
+Node: Save21647
+Node: Save and Quit22377
+Node: Redraw22972
+Node: View as Text23418
+Node: Ascii <=> EBCDIC24382
+Node: Switch Spacings24756
+Node: Binary Calculator25281
+Node: Help26049
+
+End Tag Table

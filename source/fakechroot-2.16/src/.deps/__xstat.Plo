@@ -1,0 +1,3 @@
+__xstat.lo: __xstat.c ../config.h
+
+../config.h:

@@ -1,0 +1,3 @@
+eaccess.lo: eaccess.c ../config.h
+
+../config.h:

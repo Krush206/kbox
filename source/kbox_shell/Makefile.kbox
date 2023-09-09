@@ -1,0 +1,13 @@
+TOOLCHAIN=/home/kevin/lib/android-9-toolchain
+
+CC=$(TOOLCHAIN)/bin/arm-linux-androideabi-gcc
+
+CFLAGS=-Wall
+kbox_shell: kbox_shell.c
+	$(CC) $(CFLAGS) -o libkbox_shell.so $(INCLUDES) $(LIBS) kbox_shell.c $(EXTRA_OBJS)
+	cp -p initscript libinitscript.so
+	cp -p libkbox_shell.so ../../app/libs/armeabi
+	cp -p libinitscript.so ../../app/libs/armeabi
+
+clean:
+	rm -f *.so

@@ -1,0 +1,3 @@
+euidaccess.lo: euidaccess.c ../config.h
+
+../config.h:

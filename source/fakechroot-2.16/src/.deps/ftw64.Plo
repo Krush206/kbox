@@ -1,0 +1,5 @@
+ftw64.lo: ftw64.c ftw.c ../config.h
+
+ftw.c:
+
+../config.h:

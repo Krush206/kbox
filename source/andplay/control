@@ -1,0 +1,7 @@
+Package: andplay 
+Version: 0.0.1 
+Section: media 
+Priority: optional
+Architecture: arm
+Depends:
+Description: Simple command-line music player for Android 

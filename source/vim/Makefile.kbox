@@ -1,0 +1,14 @@
+all:
+	cp -pru contrib_image/* image/
+	mkdir -p out
+	tar cfz out/data.tar.gz -C image "." 
+	tar cfz out/control.tar.gz ./control 
+	echo "2.0" > out/debian-binary
+	rm -f vim_7.3.3_kbox.deb
+	ar rcs vim_7.3.3_kbox.deb out/debian-binary out/data.tar.gz out/control.tar.gz 
+	cp vim_7.3.3_kbox.deb ../../out
+
+clean:
+	rm -rf image/
+	rm -rf out/
+	rm -f *.deb

@@ -1,0 +1,7 @@
+Package: rsync 
+Version: 3.0.8 
+Section: editors 
+Priority: optional
+Architecture: arm
+Depends:
+Description: Network copy/sync/backup utility 

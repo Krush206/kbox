@@ -1,0 +1,79 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:557: checking for a BSD compatible install
+configure:610: checking whether build environment is sane
+configure:667: checking whether make sets ${MAKE}
+configure:713: checking for working aclocal
+configure:726: checking for working autoconf
+configure:739: checking for working automake
+configure:752: checking for working autoheader
+configure:765: checking for working makeinfo
+configure:785: checking for gcc
+configure:898: checking whether the C compiler (/home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc  ) works
+configure:914: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -o conftest    conftest.c  1>&5
+configure:940: checking whether the C compiler (/home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc  ) is a cross-compiler
+configure:945: checking whether we are using GNU C
+configure:954: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E conftest.c
+configure:973: checking whether /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc accepts -g
+configure:1020: checking for a BSD compatible install
+configure:1079: checking how to run the C preprocessor
+configure:1100: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1159: checking for ANSI C header files
+configure:1172: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1264: checking whether /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc needs -traditional
+configure:1314: checking for ncurses.h
+configure:1324: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1401: checking for fcntl.h
+configure:1411: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1401: checking for getopt.h
+configure:1411: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1401: checking for limits.h
+configure:1411: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1401: checking for sys/ioctl.h
+configure:1411: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1401: checking for unistd.h
+configure:1411: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1442: checking for dirent.h that defines DIR
+configure:1455: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -c -g -O2 -Wall  conftest.c 1>&5
+configure: In function 'main':
+configure:1451: warning: unused variable 'dirp'
+configure:1480: checking for opendir in -ldir
+configure:1499: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -o conftest -g -O2 -Wall   conftest.c -ldir   1>&5
+/home/kevin/lib/android-9-toolchain/bin/../lib/gcc/arm-linux-androideabi/4.4.3/../../../../arm-linux-androideabi/bin/ld: cannot find -ldir
+collect2: ld returned 1 exit status
+configure: failed program was:
+#line 1488 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char opendir();
+
+int main() {
+opendir()
+; return 0; }
+configure:1563: checking for working const
+configure:1617: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -c -g -O2 -Wall  conftest.c 1>&5
+configure: In function 'main':
+configure:1591: warning: unused variable 's'
+configure:1611: warning: unused variable 'foo'
+configure:1579: warning: unused variable 'zero'
+configure:1573: warning: unused variable 'x'
+configure:1593: warning: 't' is used uninitialized in this function
+configure:1608: warning: 'b' is used uninitialized in this function
+configure:1638: checking whether struct tm is in sys/time.h or time.h
+configure:1651: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -c -g -O2 -Wall  conftest.c 1>&5
+configure: In function 'main':
+configure:1647: warning: statement with no effect
+configure:1674: checking for snprintf
+configure:1702: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -o conftest -g -O2 -Wall   conftest.c  1>&5
+configure:1686: warning: conflicting types for built-in function 'snprintf'
+configure:1674: checking for isprint
+configure:1702: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -o conftest -g -O2 -Wall   conftest.c  1>&5
+configure:1686: warning: conflicting types for built-in function 'isprint'
+configure:1729: checking for getopt_long
+configure:1757: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -o conftest -g -O2 -Wall   conftest.c  1>&5
+configure:1788: checking for TIOCGWINSZ
+configure:1899: checking for newwin in -lncurses
+configure:1918: /home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc -o conftest -g -O2 -Wall   conftest.c -lncurses   1>&5

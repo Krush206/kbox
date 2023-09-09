@@ -1,0 +1,7 @@
+Package: vim
+Version: 7.3.3
+Section: editors
+Priority: optional
+Architecture: arm
+Depends:
+Description: The usual vim editor build for kbox with syntax highlighting, etc., included

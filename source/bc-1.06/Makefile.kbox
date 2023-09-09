@@ -1,0 +1,21 @@
+
+all:
+	make -f Makefile
+	arm-linux-androideabi-strip bc/bc
+	cp -p bc/bc contrib_image/usr/bin/bc.bin
+	cp -pru contrib_image/* image/
+	mkdir -p out
+	tar cfz out/data.tar.gz -C image "." 
+	tar cfz out/control.tar.gz ./control 
+	echo "2.0" > out/debian-binary
+	rm -f bc_1.06_kbox.deb
+	ar rcs bc_1.06_kbox.deb out/debian-binary out/data.tar.gz out/control.tar.gz 
+	cp bc_1.06_kbox.deb ../../out
+
+
+clean:
+	make -f Makefile clean
+	rm -rf image/
+	rm -rf out/
+	rm -f *.deb
+

@@ -1,0 +1,3 @@
+lckpwdf.lo: lckpwdf.c ../config.h
+
+../config.h:

@@ -1,0 +1,643 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename hexedit.info
+@settitle Ncurses Hexedit
+@c %**end of header
+
+
+@ifinfo
+[N]Curses Hexedit Manual
+
+Copyright (C) 1999 Adam Rogoyski
+@end ifinfo
+
+@titlepage
+@title [N]Curses Hexedit
+@subtitle The hexedit manual
+@author Adam Rogoyski
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 1999 Adam Rogoyski
+
+Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified version,
+except that this permission notice may be stated in a translation approved
+by the Free Software Foundation.
+
+@end titlepage
+
+@node	Top, 	Introduction, (dir), 	(dir)
+
+@menu
+* Introduction::	About hexedit, the author, and life in general.
+* Getting Started::	Getting hexedit, compiling, running.
+* Program Operations::	Program usage and commands.
+@end menu
+
+
+
+
+@node Introduction, Getting Started, Top, Top
+@chapter Introduction
+
+@menu
+* What is Hexedit::           Brief intro to the program.
+* Copyright and License::     Terms of copying.
+* Author::                    Info about me.
+* Feedback and Bugs::         When to contact me.
+* Contributions::             Who's helped so far.
+@end menu
+
+
+@node What is Hexedit, Copyright and License, , Introduction
+@section What is Hexedit?
+
+
+@strong{hexedit} is a Curses based Hex editor.
+Unlike a text editor, which is used for editing text documents in the desired language,
+@strong{hexedit} lets you edit any file as it's byte@footnote{I assume a byte is an 8-bit
+octet.  If this is not the case, I really recommend NOT using this program.}
+for byte representation.  It can even let you view and edit your fixed disks on your Linux
+system.  This is not ideal for writing a letter or writing c code, but
+there are my times when this is ideal:
+
+@itemize @bullet
+@item
+Editing binary executables.  
+@item
+Editing your fixed disks (i.e. /dev/hda)
+@item
+Checking the output of a Program's binary data file.
+@item
+Any place you might use od(1) but need more power.  Compare more vs less.
+@item 
+Any other time you find this useful (tell me).
+@end itemize
+
+
+@node	Copyright and License, Author, What is Hexedit, Introduction
+@section Copyright and License
+@strong{[N]Curses Hexedit} Copyright @copyright{} 1998,1999 Adam Rogoyski @*
+@ @*
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU
+General Public License as publish by the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.@*
+@ @*
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
+License for more details.@*
+@ @*
+You should have received a copy of the GNU General Public License along with this program;  if not,
+write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA
+
+
+@node	Author, Feedback and Bugs, Copyright and License, Introduction
+@section Author
+@strong{[N]Curses Hexedit} was written by Adam Rogoyski@footnote{Email me at
+apoc@@laker.net}@footnote{There is a picture of me at http://profiles.yahoo.com/rogoyski/}.
+At the time of writting (December 1998) I am a Sophomore of Computer Science at the University of
+Texas at Austin.  I use Debian GNU/Linux and OpenBSD, I enjoy playing electric guitar, and
+I currently reside Pflugerville, Texas USA.  My heroes are Richard
+Stallman, Stevie Ray Vaughan, and Lisa Loeb.
+
+
+@node	Feedback and Bugs, Contributions, Author, Introduction
+@section Feedback and Bugs
+Astounding as it may be, there quite possibly are bugs in @strong{hexedit}.  You can do your
+share to help Free Software@footnote{http://www.gnu.org/philosophy/free-sw.html} be robust
+and secure by telling me about any problems you find.  Patches are even better.  General
+feedback is appreciated as well, if only to tell me that @strong{hexedit} saved the day 
+again, or that my obscure program wasted half your day when you already knew how to use
+emacs (M-x hexl-mode) in the first place.@*
+@ @*
+ I can be reached at @emph{apoc@@laker.net}
+
+
+@node	Contributions, , Feedback and Bugs, Introduction
+@section Contributions
+The following people contributed valuable feedback and information
+@itemize @bullet
+@item
+John Gatewood Ham: Gave some tips for the documentation.
+@item
+Cort (unknown): Idea for Undo.
+@item
+Matt Noel: EBCDIC support and spacing.  Countless suggestions and ideas.
+@item
+Everyone else who mailed me and told me things that broke and gave suggestions.
+@end itemize
+
+
+
+@node	Getting Started, Program Operations, Introduction, Top
+@chapter Getting Started
+
+@menu
+* Obtaining Source::		Where to find hexedit.
+* Obtaining Binaries::		Where to find binaries.
+* Building from Source::	What to do to build hexedit.
+* Command Line Invocation::	starting from the shell.
+@end menu
+
+
+
+@node Obtaining Source, Obtaining Binaries, , Getting Started
+@section Obtaining Source
+The latest source tar'd and gzip'd can be obtained at@*
+@emph{http://ccwf.cc.utexas.edu/~apoc/programs/c/hexedit/}@*
+and also from everyone's favorite ftp site@*
+@emph{ftp://metalab.unc.edu/pub/Linux/apps/editors/terminal/}@*
+If you do not know what tar and gzip are, and are using a DOS derived OS,
+@xref{Obtaining Binaries}.
+
+
+@node Obtaining Binaries, Building from Source, Obtaining Source, Getting Started
+@section Obtaining Binaries
+Pre-compiled statically linked binaries can be obtained for the following
+operating systems: i386 Linux, i386 OpenBSD, and DOS.
+The location for these is:@*
+@emph{http://ccwf.cc.utexas.edu/~apoc/programs/c/hexedit/}
+
+I've Built and tested hexedit on the following platforms:
+
+@itemize @bullet
+@item
+Linux 2.0.36 i386    ncurses 4.2 (gcc)
+
+@item 
+Linux 2.2.6  i386    ncurses 4.2 (gcc)
+
+@item
+OpenBSD 2.4  i386    ncurses     (gcc)
+
+@item
+SunOS 5.6    Sparc   curses      (gcc)
+
+@item
+AIX 4.3.2    rs6000  curses      (gcc and cc)
+
+@item
+AIX 4.3.2    ppc     curses      (gcc and cc)
+
+@item
+DOS 6.22     i386    pdcurses    (djgpp gcc)
+
+@item
+IRIX 6.3     mips    curses      (gcc)
+
+@item
+HP-UX B.10.20        curses      (gcc)
+
+@item
+SunOS 5.5.1  sparc   curses      (gcc)
+
+@item
+OSF V4.0     alpha   curses      (gcc)
+@end itemize
+
+
+@node Building from Source, Command Line Invocation, Obtaining Binaries, Getting Started
+@section Building from Source
+Building from source should be very strait forward.  I used the GNU
+configure system (autoconf and automake) so, like any GNU compliant program,
+the sequence
+@example
+   ./configure
+   make
+   make install
+@end example
+should be all that's needed to install the package.  Additional options may
+need to be given to configure, check INSTALL for such options.
+
+
+@subsection i386 Linux
+I extremely recommend you upgrade to ncurses 4.2 for hexedit to work.  It should
+work with all versions, but resizing in an xterm seems to work better with the
+newest release. The latest ncurses can be obtained at the nearest GNU ftp archive
+(or ftp://ftp.gnu.org/pub/gnu/).
+
+
+@subsection i386 OpenBSD
+OpenBSD 2.4 I believe comes with ncurses, and it worked fine at my end.
+
+@subsection rs/6000 AIX 4.3
+I belive I've fixed the previous AIX problems I was having.  Let me know if
+anything else turns up.
+
+
+@node Command Line Invocation, , Building from Source, Getting Started
+@section Command Line Invocation
+Basic program usage is as follows:@*
+@example
+@strong{hexedit} [@emph{flags}] [@emph{filename}]@*
+@end example
+Where filename is the file which you wish to edit.  Additionally, starting the program
+with no file@*
+@example
+@strong{hexedit} [@emph{flags}]@*
+@end example
+will bring up the file selection widget which will allow you to browse
+for the file.  The command line arguments which are supported are@*
+
+  -h, --help        Prints help.@*
+  -8, --highbit     Allows displaying of high order bit text.@*
+  -a, --alltext     Allows displaying of all text (probably bad idea).@*
+  -b, --buffer      Buffer the entire file into memory.@*
+  -d, --disk        View a fixed disk (Linux only).@*
+  -f, --force       Allow editing of disk (Linux only).@*
+  -q, --quiet       No Beeping!@*
+  -r, --readonly    Prevents modifying the file.@*
+  -v, --version     Prints version number.@*
+@*
+
+Defaults may be specified in the HEXEDIT environment variable, i.e.@*
+
+   sh: @emph{export HEXEDIT=-8r}@*
+  csh: @emph{setenv HEXEDIT=-8r}@*
+
+
+@node	Program Operations, , Getting Started, Top
+@chapter Program Operations
+
+
+@menu
+* Choosing a file::		How to select a file to edit.
+* Choosing a fixed disk::	How to select a fixed disk to view/edit.
+* Windows::			Descriptions of the various windows.
+* Moving About::		How to traverse the file.
+* Editing::			Editing procedures.
+* Undo::			Fixing mistakes.
+* Searching::			Locating specific strings.
+* Quit::			Exiting the editor.
+* Save::			Commiting changes to disk.
+* Save and Quit::		Commiting changes with exit.
+* Redraw::			Refreshing the screen.
+* View as Text::		Take an text snapshot of offset.
+* Ascii <=> EBCDIC::		Switch between text representations
+* Switch Spacings::		Change the way the bytes are grouped
+* Binary Calculator::		Base conversions.
+* Help::			Accessing online help.
+@end menu
+
+
+
+@node Choosing a file, Choosing a fixed disk, , Program Operations
+@section Choosing a file
+Before editing can begin, you much select a file to edit.  This can be done on the
+command line:
+@example
+   hexedit filename
+@end example
+Quite possibly, you may not remember the location of the file you wish to edit, or you
+may wish to browse over many possible files availible to find the file you are looking
+for.  Hexedit comes equipted with a full screen file/directory browser which enables you
+to specify the file you wish to edit.  Not specifying any file on the command line:
+@example
+   hexedit
+@end example
+will bring up the file selection browser. Choosing (pressing enter) a directory will open
+that directory for viewing.  Choosing a file will open that file in the editor.
+
+
+
+@node Choosing a fixed disk, Windows, Choosing a file, Program Operations
+@section Choosing a fixed disk.
+Hexedit, when run in Linux, permits access to read and edit fixed disks (i.e /dev/hda).
+Using the @emph{-d} option will allow you to edit a disk.  Currently, the disk can be
+only up to 4.2 gigs, but this will probably change in a future release.@*
+   By default, editing a disk will put you in read-only mode.  This is for your own
+protection.  If you really think you know what you are doing, issue the @emph{-f} flag
+and it will force edit mode for the disk and allow you to make changes to your disk.  
+Use this with @strong{EXTREME CAUTION!}  If you make a mistake to your boot sector, 
+erase a few important inodes, or hit the wrong keystroke, you could be seriously out
+of luck.  It is really easy to put your disk in an unusable state.  Also, remember that
+the disk could very well be changing as you look at it.  So the next time you view a
+chunk, it may be different, or even the chunk you are currently viewing may have changed
+on disk since you read it into the editor's buffer.  So be careful if you want to edit
+a mounted disk.@*
+   To put this in another way, if you don't know exactly why you would want to use 
+this option, @emph{Never Use It!}  @strong{IMPORTANT}:  Never use this in conjunction
+with the @emph{-b} option to buffer the entier file into memory.  I will leave it to
+you to think why this would be bad.  
+
+
+
+@node Windows, Moving About, Choosing a fixed disk, Program Operations
+@section Windows
+The screen is made up of three windows, the @strong{Status} window, the @strong{Main}
+window, and the @strong{Help} window.  A typical view would look something like this.
+@example
+File: data.dat                  ASCII Offset: 0x00004250 / 0x000096BB (%44)
+00004200  55 89 E5 53  8b 5D 08 A1   A8 0D 05 08  39 05 AC 0D  U..S.]......9...
+00004210  05 08 0F 8C  8C 00 00 00   05 00 04 00  00 A3 A8 0D  ................
+00004220  05 08 C1 E0  02 50 A1 B0   0D 05 08 50  E8 4B CB FF  .....P.....P.K..
+                              .
+                              .
+                             etc
+                              .
+                              .
+^G Help   ^C Exit (No Save)   ^T goTo Offset   ^X Exit and Save   ^W Search
+@end example
+
+And so on.  
+
+@subsection Status Window
+The Status Window is the first line of the screen.  At all times, it conveys the following
+information
+@itemize @bullet
+  @item
+         @strong{Filename} which you are working on
+  @item
+         @strong{Character Set} which you are using, ASCII or EBCDIC
+  @item
+         @strong{Current Offset} which you are at
+  @item
+         @strong{Size} of file
+  @item
+         @strong{Percent}age way through the file
+  @item
+         @strong{Modified Flag}: A M in the upper right corner signals that the file has been
+                                modified since last save, or that the file is read-only
+@end itemize
+
+It typically looks like this
+@example
+File: data.dat       ASCII Offset: 0x00004250 / 0x000096BB (%44)
+@end example
+
+
+@subsection Main Window
+The Main Window is the bulk of your view. It is where all viewing and editing of the file
+takes place.  All cursor operations and movements take place within this window.
+Operations within the Main Window are described in detail in section @ref{Moving About}
+
+The Main Window is broken up vertically into three columns of information.  The
+first column from the left is the base offset@footnote{All offsets are in Hexadecimal (base16)} 
+which represents the offset of the first byte of that row in the Data column.
+
+The second column is the Data column, where the Hexadecimal representation of
+each byte of the file is listed.  Each row consists of 16 bytes, seperated into 2
+columns of 8 bytes, each seperated into columns of 4 bytes.
+A typical row looks like: (third column not shown)
+@example
+00004280   50 E8 A6 CA@ @ FF FF E8 41@ @ @ CA FF FF 68@ @ 90 F5 04 08
+@end example
+
+The third column of the main window is the text representation on that row's bytes.
+Non printable characters
+are represented as a "." dot.
+
+@subsection Help Window
+The Help Window is the friendly reminder of basic commands within the editor.  It cannot
+be removed.
+
+@subsection Popup Windows
+Various commands may bring up a Popup Window.  This is a smaller window centered in the
+Main Window.  Various operations, such as Searching, Jumping to another offset, saving, etc.
+require their own window, and will "Pop" one up.  @emph{Escape}, @emph{Control-X}, and
+@emph{Control-G} can be used to cancel most Popup Windows.
+
+
+@node Moving About, Editing, Windows, Program Operations
+@section Moving About
+Moving about the file is done through the full screen terminal interface.  Operations were
+meant to be easy to learn and comfortable to use.  
+
+@subsection Hex <=> Text (Tab)
+The Main Window is composed of the hex and text representation of the file.  The cursor
+may be moved from one to the other by use of @strong{Tab} or @strong{Control-I}@footnote{Control-X signifies holding down the control key and hitting X}.
+Being on the Hex representation will be called Hex Mode, with being on the text
+representation Text Mode.
+
+@subsection Arrow Keys
+The arrow keys are the basic way to move about the file.  In Hex Mode, left and right
+shift you four bits in the file.  Going right, you could move to the lower 4 bits of
+the current byte (b & 0x0F), or move to the higher 4 bits of the next byte (b & 0xF0).
+Left can bring you either to the higher 4 bits of the current byte, or to the lower bits
+of the previous byte.  Up and Down  move you 16 bytes (offset +- 0x10) through the
+file@footnote{This isn't always true if you are near the end of the file}.
+
+In Text Mode, left and right always move you one byte, with Up and Down moving you
+16 bytes.
+
+
+@subsection Jumping
+From your current offset, you can jump to an offset relative to where you are.  With
+the cursor in the hex data area, Pressing @emph{+} or @emph{-} will bring up a entry
+box in the help window, in which you can type in the amount to jump.  Depending on whether
+you did a plus or minus, you will traverse to @strong{current offset} @emph{+|-}
+@strong{value}.  After the first jump, you can use the @emph{n} key to continue to
+jump by that offset a multitude of times.  
+
+@subsection Misc
+The following keys function as you'd expect them to
+@itemize @bullet
+  @item
+         @emph{Page Up} (also @emph{Control-Y}, @emph{Control-B}, @emph{Alt-V}, @emph{u}, @emph{y})
+  @item
+         @emph{Page Down} (also @emph{Control-F}, @emph{Control-V}, @emph{space}, @emph{v})
+  @item
+         @emph{Home}
+  @item
+         @emph{End}
+@end itemize
+
+@subsection GoTo Offset
+At any time, you may jump to a specific offset of the file with @emph{Control-T} or @emph{t}.
+This will bring up a Popup Window which will prompt you to enter
+the new file offset.  The new offset may be given in 
+decimal@footnote{Decimal numbers are base10, ex: 255},
+octal@footnote{Octal numbers are base8, prefixed by a 0, ex: 0377},
+or hex@footnote{Hex numbers are base16, prefixed by 0x, ex: 0xFF}.
+
+Note, the default value will be 0,
+permitting a fast way to jump to the begining of the file.
+
+
+@node Editing, Undo, Moving About, Program Operations
+@section Editing
+Editing is the primary@footnote{This would make viewing the secondary function, perhaps.}
+function of the editor.
+
+@subsection Modifying Bytes
+
+@subsubsection Hex Mode
+In this mode, Characters 0-9 and A-F may be used to change the current byte.  All other
+characters are ignored.  
+
+@subsubsection Text Mode
+In this mode, any printable character may be used to change the current byte.
+
+@subsection Insert
+Insert allows you to, inplace, insert a new byte of data into the file, thus increasing
+the size of the file by one byte.  The new byte is always equal to zero until you modify
+it.  Insert is done through the @emph{Insert} key or @emph{Control-A}.  Insert is only
+enabled if you use the @emph{-b} option to buffer the entire file into memory.  This is
+not something I will consider changing.  If you want to modify your copy to allow this, 
+best of luck to you.  Insert cannot work on disks either.  
+
+To simulate appending a byte to the end of the file, Jump to the end of the file,
+and insert a byte.  This will have pushed the last byte over one.  Copy the value of that
+byte to the new zero'd byte.  Now zero the last byte.
+
+@subsection Delete
+Delete allows you to delete the current byte, shifting the remainder of the file back one,
+thus decreasing the size of the file by one byte.  Delete is done through the @emph{Delete}
+key or @emph{Control-D}.  Delete will only work if you use the @emph{-b} option to buffer
+the entire file into memory.  Same as with Insert, this is not going to change in a future
+release.  Usually, you can use dd(1) to get the part of the file/disk you want, insert and
+delete on that to your heart's content, and then dd that back to the file/disk.  
+
+If there is only one byte in the file, Delete will zero the byte, but you cannot
+reduce the file to zero bytes@footnote{I recommend rm(1) for this}
+
+
+@node Undo, Searching, Editing, Program Operations
+@section Undo
+While editing a file, it is quite likely that you may make a mistake@footnote{Or a typo, if you prefer}.
+To facilitate this, an extensive Undo command has been implemented on your behalf.
+@emph{Control-U} Undoes the previous change to the file.  The editor keeps track
+of all modifications, insertions, and deletions.  What this means is that at any time
+you can, if you wish, revert the file back to it's original state by a series of
+Undo's.
+
+If you do @emph{Control-U} and the last changed byte is currently viewable
+in the Main Window, then the cursor will relocate to that byte and revert it to it's
+previous state.  If the last changed byte is not currently viewable, the currently
+viewable area will shift so that the changed byte is viewable.  In other words, you
+will be relocated to that part of the file, with the cursor on that byte at that 
+offset.  The Byte WILL NOT be Un-done.  Another @emph{Control-U} will now undo the
+change@footnote{This is probably worded poorly, but it's easy to see what I mean when
+you try it}.
+
+
+@node Searching, Quit, Undo, Program Operations
+@section Searching
+Searching allows you to quickly@footnote{The fast Boyer-Moore algorithm is used}
+locate a specific sequence of characters or bytes in the file.  @emph{Control-W} or @emph{w}
+brings up a Popup Window giving you the options of Find Next (@emph{N}),
+Search for text string (@emph{A}), and Search for Hex bytes (@emph{H}).
+
+@subsection Search for Text String
+This options allows you to search for specific character strings of text.  Spaces
+are allowed.
+
+@subsection Search for Hex Bytes
+This options allows you to search for a specific string of bytes in the file.  The
+Popup Window has an entry box, which accepts a sequence of bytes in Hex (0-9, A-F),
+while it shows the text representation of those bytes above.  Non printable
+characters are shown as "." dot.
+
+@subsection Find Next
+This options allows you to find the next occurence of the previous search (text or
+Hex).  This option is not availible until after your first search is completed.
+
+This options is bound to @emph{Control-N} to allow quickly locating the
+next match.
+
+
+@node Quit, Save, Searching, Program Operations
+@section Quit
+Quiting without prompting to save is done by @emph{Control-C}.  It will bring up
+a Popup Window to make sure of your decision to quit the program.
+
+
+@node Save, Save and Quit, Quit, Program Operations
+@section Save
+To save the file at any time with the currently made changes is done with
+@emph{Control-O}@footnote{On OpenBSD and a few other OS's, This keystroke
+does not seem to work.  It has something to do with the terminal using it}.
+The file may be saved over the current file@footnote{This isn't always possible.  One place is
+in DOS if you try to save over the executable currently being ran}, or you may save the file as
+a new or different file.  In the event of an error or inability to save, you will be given
+the standard@footnote{perror (filename)} error message in the Popup Window.
+
+
+@node Save and Quit, Redraw, Save, Program Operations
+@section Save and Quit
+To exit the program, saving the file as you go, use @emph{Control-X}.  If the file has not
+been modified since the last save, the program will exit without saving.  If the file has 
+been modified, you will be prompted for the filename to save to, which may be different
+than the current filename.  In the event of an error or inability to save, you will be given
+the standard error message in the Popup Window, and the program will resume operations without
+terminating.
+
+
+@node Redraw, View as Text, Save and Quit, Program Operations
+@section Redraw
+In the event that the terminal becomes unreadable, or for any other reason, the screen may
+be redrawn with @emph{Control-L}.  This will only erase and redraw the screen.  If the
+terminal needs to be reset@footnote{By '/bin/echo "\033c"' perhaps}, the terminal will
+still need to be reset.
+
+
+@node View as Text, Ascii <=> EBCDIC, Redraw, Program Operations
+@section View as Text
+If at any time, you would like to see what the current file looks like as an text dump, 
+@emph{Control-E} will let you.  Note: This feature was intended for files which are
+mostly made up of text.  I implemented this by traveling back to the previous new line
+so that the text would be aligned how it would be in a text editor.  Because of this, in
+a file without any new lines for a long time, you may not be able to view certain parts
+of the file in this mode.  I do not see this as a problem, and I can recommend some really
+nice text editors for you if you disagree.  Just don't use this function@footnote{Don't use this function.  Never use it.  I don't.}.
+
+This feature was meant to just show you a snapshot of the current section as text.
+That's all it does, that's all it will do.
+
+
+@node Ascii <=> EBCDIC, Switch Spacings, View as Text, Program Operations
+@section Ascii <=> EBCDIC
+Some old IBM mainframes use EBCDIC instead of the ASCII character set.  To switch between
+which way the text is represented, @emph{Control-R} will switch it.  If you don't know
+what this is, you probably should not use it.  
+
+
+@node Switch Spacings, Binary Calculator, Ascii <=> EBCDIC, Program Operations
+@section Switch Spacings
+Some people like having spaces between each byte, and between each 8 bytes:
+@example
+04 30 40 23  23 43 23 54   23 48 83 29  23 12 00 45
+@end example
+Some people like having the bytes grouped into four byte words:
+@example
+04304023 23432354 23488329 23120045
+@end example
+To select which way you'd like to view the file as, use @emph{Control-P} to 
+switch the spacings around to the way you like it.
+
+@node Binary Calculator, Help, Switch Spacings, Program Operations
+@section Binary Calculator
+A binary calculator is included which will let you convert between 
+base2, base8, base10, and base16 easily.  This
+can be brought up with @emph{Control-+}.  Currently, this doesn't
+have all the features I'd like to spend the time to put into it, but
+it still is quite useful.
+
+Currently, all numbers in the calculator are represented in
+the machines default signed Integer size, a size which will be displayed
+in the status window.  This means that most likely setting the highest
+bit will lead to a negative number.  If I get time, unsigned ints as well
+as indefinite precision, and arithmetic functions will be added.
+
+
+@node Help, , Binary Calculator, Program Operations
+@section Help
+At any time, @emph{Control-G} may be used to get a list of commands for the editor.  The
+Help Window will also list some commonly used commands.
+
+
+
+@contents
+
+
+@bye

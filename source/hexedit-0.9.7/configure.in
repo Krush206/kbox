@@ -1,0 +1,106 @@
+dnl configure.in for hexedit
+dnl April 23rd, 1999 Adam Rogoyski <apoc@laker.net>
+dnl see COPYING for terms of copying under the GNU General Public License
+
+AC_INIT(src/main.c)
+
+AM_INIT_AUTOMAKE(hexedit, 0.9.7)
+AM_CONFIG_HEADER(config.h:config.in)
+
+AC_PROG_CC
+if test "$GCC" = "yes"; then
+  CFLAGS="$CFLAGS -Wall"
+fi
+
+AC_PROG_INSTALL
+
+AC_DEFINE(_GNU_SOURCE)
+
+AC_HEADER_STDC
+AC_PROG_GCC_TRADITIONAL
+
+AC_CHECK_HEADERS(ncurses.h)
+if test "$ac_cv_header_ncurses_h" = "no"; then
+  AC_CHECK_HEADERS(curses.h)
+  if test "$ac_cv_header_curses_h" = "no"; then
+    echo "*** Cannot find Curses headers, probably not installed"
+    echo "*** Hexedit will not run without the curses library"
+  fi
+fi
+
+AC_CHECK_HEADERS(fcntl.h getopt.h limits.h sys/ioctl.h unistd.h)
+AC_HEADER_DIRENT
+AC_C_CONST
+AC_STRUCT_TM
+AC_CHECK_FUNCS(snprintf isprint)
+AC_CHECK_FUNCS(getopt_long,AC_DEFINE(HAVE_GETOPT_LONG))
+
+
+dnl find TIOCGWINSZ if possible
+
+AC_MSG_CHECKING([for TIOCGWINSZ])
+AC_EGREP_CPP(rogoyski_hexedit_termio,
+[
+#include <termio.h>
+#ifdef TIOCGWINSZ
+  rogoyski_hexedit_termio
+#endif
+], hex_termio_h=yes)
+
+if test "$hex_termio_h" = "yes"; then
+  AC_DEFINE(HAVE_TERMIO_H)
+  AC_MSG_RESULT([yes, found in termio.h])
+else
+
+  AC_EGREP_CPP(rogoyski_hexedit_termios,
+  [
+  #include <termios.h>
+  #ifdef TIOCGWINSZ
+    rogoyski_hexedit_termios
+  #endif
+  ], hex_termios_h=yes)
+
+  if test "$hex_termios_h" = "yes"; then
+    AC_DEFINE(HAVE_TERMIOS_H)
+    AC_MSG_RESULT([yes, found in termios.h])
+  else
+
+    AC_EGREP_CPP(rogoyski_hexedit_sys_termio,
+    [
+    #include <sys/termio.h>
+    #ifdef TIOCGWINSZ
+      rogoyski_hexedit_sys_termio
+    #endif
+    ], hex_sys_termio_h=yes)
+
+    if test "$hex_sys_termio_h" = "yes"; then
+      AC_DEFINE(HAVE_SYS_TERMIO_H)
+      AC_MSG_RESULT([yes, found in sys/termio.h])
+    else
+
+      AC_EGREP_CPP(rogoyski_hexedit_sys_termios,
+      [
+      #include <sys/termios.h>
+      #ifdef TIOCGWINSZ
+        rogoyski_hexedit_sys_termios
+      #endif
+      ], hex_sys_termios_h=yes)
+
+      if test "$hex_sys_termios_h" = "yes"; then
+        AC_DEFINE(HAVE_SYS_TERMIOS_H)
+        AC_MSG_RESULT([yes, found in sys/termios.h])
+      else
+        AC_MSG_RESULT([no])
+      fi
+    fi
+  fi
+fi
+
+AC_CHECK_LIB(ncurses, newwin, ,
+    AC_CHECK_LIB(curses, newwin), ,
+    echo "Hexedit requires the curses library"
+    echo "Ncurses is freely available: ftp://ftp.gnu.org/pub/gnu/"
+    exit 1)
+
+
+AC_OUTPUT(Makefile docs/Makefile gnu/Makefile src/Makefile)

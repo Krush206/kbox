@@ -1,0 +1,3 @@
+lremovexattr.lo: lremovexattr.c ../config.h
+
+../config.h:

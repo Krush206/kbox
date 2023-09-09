@@ -1,0 +1,3 @@
+lgetxattr.lo: lgetxattr.c ../config.h
+
+../config.h:

@@ -1,0 +1,3 @@
+stat64.lo: stat64.c ../config.h
+
+../config.h:

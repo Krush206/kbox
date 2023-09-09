@@ -1,0 +1,3 @@
+linkat.lo: linkat.c ../config.h
+
+../config.h:

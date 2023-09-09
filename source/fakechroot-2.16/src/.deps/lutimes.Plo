@@ -1,0 +1,3 @@
+lutimes.lo: lutimes.c ../config.h
+
+../config.h:

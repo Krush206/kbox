@@ -1,0 +1,3 @@
+readlinkat.lo: readlinkat.c ../config.h
+
+../config.h:

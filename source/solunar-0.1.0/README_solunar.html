@@ -1,0 +1,48 @@
+<a href="articles.html">&bull; Articles</a>
+<a href="computing_articles.html">&bull; Articles about computing</a>
+
+<h1>Solunar</h1>
+
+<code>solunar</code> is a command-line utility for calculating 
+sun- and moon-related information, such as rises and sets, apogees, 
+and full moons. It also displays common festival days whose dates
+vary from year to year, such as Easter.
+<p/>
+<code>solunar</code> is intended to be used in scripts, so it's output 
+is designed to be easily parsed, rather than nicely presented. But it is
+tolerably human-readable.
+<p/>
+For full details of operation, see 
+the <a href="solunar.man.html">solunar man page</a>.
+
+<h2>Building and installing</h2>
+
+<code>solunar</code> is written in plain old C and has a plain old
+Makefile. It should build on most modern Linux/Unix systems with 
+the GNU C compiler (it does use some GNU-specific code). For 
+Windows, <code>solunar</code> builds cleanly, and has been tested,
+under Cygwin with gcc-4.0. The program uses the Unix-specific locale
+database for timezone and DST information. Consequently, it won't 
+build or run with MinGW on Windows. Sorry.
+<p/>
+The program consists of one binary, and an optional man page. Install
+by copying them wherever you like.
+
+<h2>Disclaimers, etc</h2>
+
+I've originally wrote this program for predicting animal feeding habits,
+for the purposes of photography. Some animals emerge from cover 
+only to feed, and 
+there's some evidence that feeding habits are influenced
+by the position of the sun and/or moon. The algorithms I used are most
+taken from Jean Meeus' publications, and have proven accurate enough
+for my purposes. However, I really don't recommend using this program
+for anything critical. 
+<p/>
+The code is distributed according to the GPL. Please feel free to use
+for any purpose, but at your own risk. 
+ 
+<h2>Downloads</h2>
+
+<a href="solunar-0.1.0.tar.gz">Source code</a>
+

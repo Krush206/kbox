@@ -1,0 +1,3 @@
+canonicalize_file_name.lo: canonicalize_file_name.c ../config.h
+
+../config.h:

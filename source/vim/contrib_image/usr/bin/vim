@@ -1,0 +1,2 @@
+#!/system/bin/sh
+VIMRUNTIME=$KBOX/usr/vim/runtime/ $KBOX/usr/vim/vim "$@"

@@ -1,0 +1,8 @@
+The directory app contains the original Java app from Jack Palovich,
+modified for this application. app_1_0_48_2 contains the latest version
+of the terminal app, again modified. However, note that the rest
+of the build scripts in the source directory are set to put their
+output into somewhere under ./app, not ./app_1_0_48_2. So if this
+directory is cleaned out, or modifications are made to kbox_shell, etc.,
+some manual updates will be necessary.
+

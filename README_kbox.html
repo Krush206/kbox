@@ -1,0 +1,167 @@
+<h2>KBOX environment variable</h2>
+
+Running kbox_shell sets the environment variable $KBOX to point to the
+directory containing the bin directory containing the kbox_shell binary.
+That is, if if kbox_shell is /my_path/bin/kbox_shell, $KBOX will be 
+set to /my_path/. This is, in effect, the root of the kbox installation.
+Many of the kbox scripts and binaries use this variable to locate other
+standard directories -- home, etc, and so on. The supplied binaries
+are only ordinary, complied ARM executables. They do not need to be invoked
+with kbox_shell as a wrapper around bash. However, if they are invoked
+directly, certain important files or directories may not be found.
+
+<h2>$HOME and username</h2>
+
+With kbox, $HOME is derived from the terminal emulator
+app's user name (as stock Android has no concept of user credentials,
+lacking an <code>/etc/passwd</code> or similar).
+In fact, user ID itself is a dubious concept in Android.
+I believe that the 
+stock Android implementation of <code>getpwuid</code> (the function
+that maps a numeric user ID onto user account details simply synthesize
+the details from the numeric ID. In any event, your home directory is
+likely to be something like <code>$KBOX/home/app_58<code>, and your
+user name <code>app_58</code>. The user name is used when connecting to
+services like <code>ssh</code>.  
+
+<h2>ssh (client)</h2>
+
+Provided by dropbear. Standard build. Keys will be cached in $HOME/.ssh in
+the usual way. No non-standard arguments need be used, but bear in mind
+that you'll have to specify a specific user for the remote service because
+the Android user ID is arbitrary in a non-rooted device.
+
+<h2>scp (client)</h2>
+
+Provided by dropbear. Standard build. scp uses a hard-coded path to the ssh
+utility, which will be wrong for kbox. I have renamed the binary scp.bin,
+and created a script called scp that will run scp.bin with the -S switch,
+overriding the location of the ssh utility.
+
+<h2>ssh (server)</h2>
+
+This is a somewhat modified version of dropbear. The original modification
+was by Jakob Blomer, to account for the fact that Android has no 
+<code>/etc/passwd</code>. I have further modified the program to launch
+<code>kbox_shell</code> (and therefore the busybox shell) instead of
+the Android shell. 
+<p/>
+There is a script <code>ssh_daemon.sh</code> that will launch the
+ssh server with the appropriate arguments, specifying user credentials
+and port number on the command line. As always, the port number must
+be above 1024 for non-root usage. In addition, the user ID (specified
+by the -U argument) <i>must</i> be the user ID of the terminal emulator
+app running the script. <code>ssh_daemon.sh</code> takes care of thse
+issues, and can be used as a template for more appropriate customization.
+Note that this script sets the current username as the password, which
+isn't hugely secure.
+<p/>
+(NB: 'FIXME' messages in the log output are from Google's rather 
+incomplete implementation of the C library).
+<p/>
+In order to connect to the sshd server run as described above, clients
+need to specify the port number on the command line (e.g., <code>
+-p 1027</code>).
+
+<h2>scp (server)</h2>
+
+I haven't yet been able to figure out how to implement the server side
+of an scp operation. I suspect the problem is (again) port numbers. 
+The ssh server will accept an incoming scp request, but it doesn't seem
+to get any further.
+
+<h2>rsync(client)</h2>
+
+Standard build. rsync can be used as a client with the default use of
+ssh to start the server on the remote system. Or it can communicate
+with a stand-alone <code>rsync</code> server, if a port number is
+specified on the command line. 
+
+<h2>rsync(server)</h2>
+
+rsync can be run as a server by using daemon mode. This mode does not
+require any other dameon processes (e.g., sshd) to be running on the device.
+The command line is:
+
+<pre>
+% rsync --daemon --config [config_file] --port [port] --no-detach \
+  --log-file /dev/null 
+</pre>
+
+You don't need to redirect the log to <code>/dev/null</code> -- but the
+standard log location won't work, so you'll have to send it somewhere.
+The config_file specifies what files will be made available in what
+modes, and how they will be identified by the client. A sample config
+file is provided in $KBOX/etc/rsyncd.conf. This config makes all files
+available, read/write, under the identifier 'all'. The client will
+do transfers like this:
+
+<pre>
+% rsync --port [device_ip]::all/path/to/file [local_path]
+</pre>
+
+This is essentiall the normal usage of rsync as a client, except that
+the path is prefixed ':all', and the port number is given explicitly.
+<p/>
+Note that the rsync daemon will access only to the same files as the 
+terminal emulator has, in an unrooted device.
+<p/>
+It might be convenient to have the rsync daemon launched by ssh daemon,
+as is usual on desktop Linux distributions. In such a case, it would not
+be necessary to run the rsync daemon separately if the ssh daemon were
+already running.
+<p/>
+Unfortunately, there is a problem with port numbers. When rsync is run on
+the client, it will use (by default) ssh to start the remote server, with
+default port number. But we can't use the default port number if
+we're not running as root (as explained above). So we have to use the 
+rsync <code>-e</code> switch 
+
+<h2>terminfo</h2>
+
+A number of utilities need a terminfo (terminal control codes) database.
+This can be obtained from desktop Linux distributions but, for this 
+application, you probably don't need all the different terminals, just
+the ones you expect to use. I have extracted <code>u/unknown</code> and
+<code>l/linux</code> as the bare minimum. Most applications that
+need to read terminfo will look at an environment variable TERMINFO
+for its location. I have created the terminfo directory as
+$KBOX/etc/terminfo, and set the environment variable in the login
+profile.
+
+<h2>vim</h2>
+XXX Now an optional package
+I got a pre-compiled version of vim from <a href="http://credentiality2.blogspot.com/2010/08/native-vim-for-android.html">here</a>.
+vim needs TERMINFO set and, in order to use its more complex features,
+it needs a variable VIMRUNTIME pointing to its own installation. I have
+created a script that runs the vim binary, setting the appropriate
+variables.
+
+<h3>file</h2>
+
+'file' is renamed 'file.bin', and a script 'file' runs file.bin with the
+environment variable MAGIC pointing to the magic number file location.
+
+
+<h2>Helper scripts</h2>
+
+The following scrips start server daemons, using port numbers specified
+in <code>$KBOX/etc/kbox_ports.sh</code>. These are provided for convenience,
+and may well need to be customized.
+
+<pre>
+rsync_daemon.sh
+telnet_daemon.sh
+ssh_daemon.sh
+</pre>
+
+<h3>bc</h3>
+
+http://phodd.net/gnu-bc/
+
+static/dynamic issue
+
+<h3>hexedit</h3>
+
+Works as expected. Links ncurses.so dynamically,
+

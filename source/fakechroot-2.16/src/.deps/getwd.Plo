@@ -1,0 +1,3 @@
+getwd.lo: getwd.c ../config.h
+
+../config.h:

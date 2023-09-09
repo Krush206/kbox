@@ -1,0 +1,7 @@
+Package: hexedit 
+Version: 0.9.3 
+Section: editors 
+Priority: optional
+Architecture: arm
+Depends:
+Description: hexadecimal file editor 

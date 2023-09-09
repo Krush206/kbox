@@ -1,0 +1,3 @@
+futimesat.lo: futimesat.c ../config.h
+
+../config.h:

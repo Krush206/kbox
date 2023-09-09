@@ -1,0 +1,41 @@
+BINDIR=/usr/bin
+MANDIR=/usr/share/man
+
+.SUFFIXES: .o .c
+
+all: solunar solunardoc
+
+VERSION=0.1.0
+
+CFLAGS=-Wall -DVERSION=\"$(VERSION)\" -g 
+
+GCC=gcc
+
+OBJS=main.o city.o pointerlist.o error.o latlong.o datetime.o suntimes.o roundutil.o trigutil.o timeutil.o moontimes.o mathutil.o nameddays.o astrodays.o astro.o
+
+solunar: $(OBJS)
+	$(GCC)  -o solunar $(OBJS) -lm
+
+.c.o:
+	$(GCC) $(CFLAGS) -o $*.o -c $*.c
+
+clean:
+	rm -f *.o solunar
+
+cityinfo.h: /usr/share/zoneinfo/zone.tab parse_zoneinfo.pl
+	./parse_zoneinfo.pl
+
+solunardoc:
+	MANPATH=. man -E ascii solunar | man2html -title solunar > solunar.man.html
+
+dist: clean
+	rm -f solunar-0.1.0.tar.gz
+	tar cvfz /tmp/solunar-0.1.0.tar.gz ../solunar-0.1.0/
+	mv /tmp/solunar-0.1.0.tar.gz .
+
+install:
+	cp -p solunar $(BINDIR)
+	cp -pr man1/* $(MANDIR)/man1
+
+include dependencies.mak
+

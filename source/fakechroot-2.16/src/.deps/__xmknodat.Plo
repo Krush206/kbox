@@ -1,0 +1,3 @@
+__xmknodat.lo: __xmknodat.c ../config.h
+
+../config.h:

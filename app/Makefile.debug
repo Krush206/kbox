@@ -1,0 +1,15 @@
+LIBDIR=libs/armeabi/
+
+all:
+	cp -pru ../contrib_image/* ../image/
+	tar cfz libs/armeabi/libbase.so -C ../image .
+	ant debug
+	cp bin/Term-debug.apk ../out
+
+clean:
+	rm -f $(LIBDIR)/libbase.so
+	rm -f $(LIBDIR)/libkbox_shell.so
+	rm -f $(LIBDIR)/libinitscript.so
+	rm -f $(LIBDIR)/libbusybox.so
+	
+

@@ -1,0 +1,7 @@
+Package: bc 
+Version: 1.0.6 
+Section: math 
+Priority: optional
+Architecture: arm
+Depends:
+Description: bc calculator, including the function library from phodd.net 

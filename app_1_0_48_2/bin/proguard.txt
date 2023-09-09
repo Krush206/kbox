@@ -1,0 +1,21 @@
+# view AndroidManifest.xml #generated:51
+-keep class jackpal.androidterm.RemoteInterface { <init>(...); }
+
+# view AndroidManifest.xml #generated:29
+-keep class jackpal.androidterm.Term { <init>(...); }
+
+# view AndroidManifest.xml #generated:66
+-keep class jackpal.androidterm.TermPreferences { <init>(...); }
+
+# view AndroidManifest.xml #generated:70
+-keep class jackpal.androidterm.TermService { <init>(...); }
+
+# view res/layout/term_activity.xml #generated:19
+-keep class jackpal.androidterm.TermViewFlipper { <init>(...); }
+
+# view AndroidManifest.xml #generated:68
+-keep class jackpal.androidterm.WindowList { <init>(...); }
+
+# view res/layout/window_list_item.xml #generated:39
+-keep class jackpal.androidterm.WindowList$CloseButton { <init>(...); }
+

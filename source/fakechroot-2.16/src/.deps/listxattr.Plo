@@ -1,0 +1,3 @@
+listxattr.lo: listxattr.c ../config.h
+
+../config.h:

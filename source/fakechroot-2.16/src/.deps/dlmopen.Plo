@@ -1,0 +1,3 @@
+dlmopen.lo: dlmopen.c ../config.h
+
+../config.h:

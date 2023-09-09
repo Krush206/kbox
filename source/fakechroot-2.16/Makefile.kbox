@@ -1,0 +1,9 @@
+all:
+	make -f Makefile
+	/home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc  -shared -o libfakechroot.so -Wl,-soname,libfakechroot.so -Wl,--whole-archive  src/.libs/libfakechroot.a  -Wl,-no-whole-archive
+	cp libfakechroot.so ../../image/usr/lib/
+	cp -p chroot_shell.sh ../../image/bin
+
+clean:
+	make -f Makefile clean
+

@@ -1,0 +1,2 @@
+#!/system/bin/sh
+MAGIC=$KBOX/usr/share/misc/magic.mgc file.bin "$@"

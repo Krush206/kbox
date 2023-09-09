@@ -1,0 +1,3 @@
+lchmod.lo: lchmod.c ../config.h
+
+../config.h:

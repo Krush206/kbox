@@ -1,0 +1,21 @@
+TOOLCHAIN=/home/kevin/lib/android-9-toolchain
+
+CC=$(TOOLCHAIN)/bin/arm-linux-androideabi-gcc
+
+CFLAGS=-Wall
+LIBS=-lOpenSLES
+andplay: main.c control
+	$(CC) $(CFLAGS) -s -o andplay $(INCLUDES) $(LIBS) main.c $(EXTRA_OBJS)
+	mkdir -p ../../image/bin
+	mkdir -p image/usr/bin
+	cp -p andplay image/usr/bin
+	mkdir -p out
+	tar cfz out/data.tar.gz -C image "." 
+	tar cfz out/control.tar.gz ./control 
+	echo "2.0" > out/debian-binary
+	rm -f andplay_0.0.1_kbox.deb
+	ar rcs andplay_0.0.1_kbox.deb out/debian-binary out/data.tar.gz out/control.tar.gz 
+	cp andplay_0.0.1_kbox.deb ../../out
+
+clean:
+	rm -rf andplay *.o out *.deb image/*

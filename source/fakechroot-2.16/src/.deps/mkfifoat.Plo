@@ -1,0 +1,3 @@
+mkfifoat.lo: mkfifoat.c ../config.h
+
+../config.h:

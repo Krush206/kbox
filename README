@@ -1,0 +1,18 @@
+IMPORTANT
+Please note that there are static file locations in the build tree. These were
+set when the 'configure' scripts were run. To avoid needed to run configure 
+again, please check the following files:
+./source/busybox-1.19.2/.config line 64
+
+
+contrib_image: 
+an image of the root filesystem, containing files that are _not_ built as part
+of this build process, but have been imported from elsewhere
+
+image:
+the file root filesystem, created by the build process, and then merged with
+contrib_image. The contents of image are packed into the file libbase.so in
+the Android app's lib directory
+
+
+

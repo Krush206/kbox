@@ -1,0 +1,3 @@
+get_current_dir_name.lo: get_current_dir_name.c ../config.h
+
+../config.h:

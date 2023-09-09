@@ -1,0 +1,3 @@
+__readlink_chk.lo: __readlink_chk.c ../config.h
+
+../config.h:

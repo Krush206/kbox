@@ -1,0 +1,3 @@
+setxattr.lo: setxattr.c ../config.h
+
+../config.h:

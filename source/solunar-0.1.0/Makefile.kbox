@@ -1,0 +1,42 @@
+.SUFFIXES: .o .c
+
+all: solunar_package 
+
+VERSION=0.1.0
+
+CFLAGS=-Wall -DVERSION=\"$(VERSION)\" -g 
+
+GCC=/home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-gcc
+
+OBJS=main.o city.o pointerlist.o error.o latlong.o datetime.o suntimes.o roundutil.o trigutil.o timeutil.o moontimes.o mathutil.o nameddays.o astrodays.o astro.o
+
+solunar_package: solunar
+	mkdir -p contrib_image/usr/bin/
+	mkdir -p image/
+	mkdir -p image/usr/man/man1
+	cp -pru contrib_image/* image/
+	cp -p  solunar image/usr/bin/
+	cp -p man1/solunar.1 image/usr/man/man1
+	mkdir -p out
+	tar cfz out/data.tar.gz -C image "." 
+	tar cfz out/control.tar.gz ./control 
+	echo "2.0" > out/debian-binary
+	rm -f solunar_0.1.0_kbox.deb
+	ar rcs solunar_0.1.0_kbox.deb out/debian-binary out/data.tar.gz out/control.tar.gz 
+	cp solunar_0.1.0_kbox.deb ../../out
+
+
+solunar: $(OBJS)
+	$(GCC) -s -o solunar $(OBJS) -lm
+
+.c.o:
+	$(GCC) $(CFLAGS) -o $*.o -c $*.c
+
+clean:
+	rm -f *.o solunar image/ out/
+
+cityinfo.h: /usr/share/zoneinfo/zone.tab parse_zoneinfo.pl
+	./parse_zoneinfo.pl
+
+include dependencies.mak
+

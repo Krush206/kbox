@@ -1,0 +1,7 @@
+Package: gawk 
+Version: 4.0.1 
+Section: utilities 
+Priority: optional
+Architecture: arm
+Depends:
+Description: Pattern scanning and processing language 

@@ -1,0 +1,3 @@
+__realpath_chk.lo: __realpath_chk.c ../config.h
+
+../config.h:

@@ -1,0 +1,126 @@
+0.9.7: August 8th, 1999
+   + Changed date format to use ISO 8601 format.
+   + Fixed file selection to use Control-X for exit.
+   + Changed initialization and File selection errors to work right.
+   + Changed Quit to allow Loading a new file (Quit : Yes, No, New File).
+   + Fixed as many memory leaks as I could find, since with the ability
+     to edit more than one file, a user never needs to even ever exit
+     hexedit.
+   + COLOR!!!  Terminals that support color can use color.
+   + -nocolor option for the people who like the default gray scale.
+   + Added Function Keys, F1 for help, F2 for Save, F3 for exit.
+   + F5 Function key toggles color
+   + Fixed typo with saving a file.
+   + Fixed Control-C so that it works correctly, or at least reasonably.
+   + Fixed arrow keys so that they should work everywhere on vt100 terminals.
+   + Added help.c
+   + Fixed Help.  Help now works how I wanted it to, will let you scroll
+     up and down if it doesn't all fit on the screen.  
+
+0.9.6: April 23rd, 1999
+   + Fixed view text mode so that it doesn't wrongfully skip lines.
+   + Fixed some occurences of "ascii" to "text" to be clearer.
+   + Added J/K keys for down/up arrows in search selection and calculator.
+   + Fixed some help messages and menus.
+
+0.9.5: April 8th, 1999
+   + Fixed bug with delete, now we truncate the file to the corect size.
+     Thanks to tenthumbs for this obvious one that got past me.
+
+0.9.4: Marth 20th, 1999
+   + Added OpenBSD disk support.
+   + Fixed man page errors.
+   + Fixed a few unclear messages about insert and delete.
+
+0.9.3: March 17th, 1999
+   + Added support for reading file in chunks.  Major addition.
+   + Command line flags -b (buffer), -d,-f (linux disk), -q (quiet, no beeping)
+   + Added support for editing fixed disks in Linux.
+   - Removed Bold Table thingy (table_ functions) to be replaced by hash
+   + Added hash table to lookup changes and boldify things. (hash.c)
+   + Control-U to delete whole line in stringBox widget
+   + Jumping relative to current offset fowards or backwards.
+   + Lots of fixes and small changes to make things work right.
+   + Lots and lots of small changes everywhere!
+   + Documentation updates for new features.
+
+0.9.2: February 23rd, 1999 AD
+   + added command line options for printing 8-bit and all text characters.
+   + added HEXEDIT environment variable for saving command line arguments
+   + fixed pre-processor directives (stupid compile fix).
+   + fixed some online messages relating to being in read-only mode.
+   + added vi (h,j,k,l) movement keys
+   + fixed a few dumb typos and small bugs.
+   + changed email address to match rfc <apoc@laker.net> style.
+   + Suggestions from Sotiris Vassilopoulos
+
+0.9.1: January 31st, 1999 AD
+   + New read-only mode, prevents you from modifying the file.
+   + Added command line arguments (gnu/getopt* files)
+   + Added autoconf check for TIOCGWINSZ (*termio*.h) and getopt_long
+   + fix a few compile bugs.
+   + fixed file widget status window to display correctly.
+   + Updated documentation.
+
+0.9.0: January 16th, 1999 AD
+   + Added 4 byte work spacing mode (Matt Noel).
+   + Added EBCDIC support (Matt Noel).
+   + Switching between ASCII and EBCDIC, and spacings.
+   + fixed editing, undo, for EBCDIC and spacings.
+   + Updated Texinfo docs and man page.
+   - Removed LaTeX doc, use Texinfo instead.
+   + Fixed memory bug in Search.
+
+0.8.9: January 12th, 1999 AD
+   + Added Automake/Autoconf GNU build system.
+   + Fixed some compatibility issues.
+   + Updated LaTeX documentation.
+   + Added Texinfo documentation.
+   + Added default INSTALL file.
+   + Close to GNU coding standards now.
+   + changed identifier tab to tabb (AIX doesn't like tab).
+   + Fixed some bugs in calculator.
+
+0.8.8: January 4th, 1999 AD
+   + Added file.c 
+   + File Selection widget for when no command line file is given,
+     does the ls thing graphically.
+   + Merge sort for linked lists (to sort files in current directory for
+     use with the file selection).
+   + Added filekeys.c
+  +- Split file.c into file.c and filekeys.c
+   + Finished File Selection widget.
+   + Not specifying a file brings up the brand new File Selection
+     Widget.  Full screen Directory listings allow you to find the
+     file you want to edit easily.  
+   + Handles SIGWINCH in File Select mode.
+   + Updated Documentation.
+   + Cleaned up Makefile
+
+
+
+0.8.7: December 20th, 1998 AD
+   + Added Real Documentation in LaTeX format (docs/hexedit.tex)
+     with included DVI (docs/hexedit.dvi) and Postscript (docs/hexedit.ps)
+     translations.
+   + Fixed Undo so it beeps correctly when there's nothing to undo.
+
+
+0.8.6: December 20th, 1998 AD
+   + Added CHANGES file
+   + added undo.c
+   + added struct Change
+   + added struct ChangeLog
+   + Added Undo command ^U
+   + Added Undo into help menus
+   + Merged hexedit.h and main.h
+   - Removed main.h
+   + Merged Makefiles
+   - Removed Makefile.*
+
+
+0.8.5: August 16th, 1998 AD
+   o First real public release
+
+
+

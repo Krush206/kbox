@@ -1,0 +1,144 @@
+.\" Copyright (C) 1998,1999 Adam Rogoyski
+.TH HEXEDIT 1
+.SH NAME
+hexedit \- Full screen curses Hex editor
+.SH SYNOPSIS 
+.nr a \n(.j
+.ad l
+.nr i \n(.i
+.in +\w'\fBhexedit 'u
+.ti \niu
+.B hexedit
+.de OP
+.ie \\n(.$-1 .RI "[\ \fB\\$1fP" "\\$2" "\ ]"
+.el .RB "[\ " "\\$1" "\ ]"
+..
+.OP \-8abdfgqrv
+.RI "[\ " filename "\ ]"
+.br
+.ad \na
+.SH DESCRIPTION 
+.I Hexedit
+is an editor to edit binary (or any) files or disks.  The Display consists
+of the current offset from 0 (the first byte), the next sixteen bytes
+(aligned by bytes or 32-bit words), and it's ASCII or EBCDIC text
+representation.
+.SH OPTIONS
+.TP
+.B \fI-h, --help\fR
+Display help
+.TP
+.B \fI-8, --highbit\fR
+Display 8-bit text
+.TP
+.B \fI-a, --alltext\fR
+Display all text regardless that you know better
+.TP
+.B \fI-b, --buffer\fR
+Buffer the entire file into memory.  Faster, and enables insert and delete.
+.TP
+.B \fI-d, --disk\fR
+File editing is a disk.  OpenBSD and Linux only.
+.TP
+.B \fI-f, --force\fR
+Force editing of a disk.  Need this option to enable writing to disks.
+.TP
+.B \fI-q, --quiet\fR
+Quiet Mode; Turn off all beeping.
+.TP
+.B \fI-r, --readonly\fR
+Do not allow modifying the file
+.TP
+.B \fI-v, --version\fR
+Display version number
+
+.SH Commands and keys
+.TP 
+.B \fI^A\fR
+Insert byte
+.TP
+.B \fIInsert\fR
+Insert byte
+.TP
+.B \fI^D\fR
+Delete byte
+.TP
+.B \fIDelete\fR
+Delete byte
+.TP
+.B \fI^E\fR
+viEw as text dump
+.TP
+.B \fI^F\fR
+Page down
+.TP
+.B \fI^V\fR
+Page down
+.TP
+.B \fIPage Down\fR
+Page down
+.TP
+.B \fI^B\fR
+Page Up
+.TP
+.B \fI^Y\fR
+Page Up
+.TP
+.B \fIAlt-V\fR
+Page Up
+.TP
+.B \fIPage Up\fR
+Page Up
+.TP
+.B \fITab\fR
+Switch from hex to text representation
+.TP
+.B \fI^I\fR
+Switch from hex to text representation
+.TP
+.B \fI^T\fR
+goTo offset
+.TP
+.B \fI^G\fR
+Get help
+.TP
+.B \fI^L\fR
+Redraw screen
+.TP
+.B \fI^C\fR
+Quit without saving
+.TP
+.B \fI^O\fR
+Save
+.TP
+.B \fI^X\fR
+Save and Quit
+.TP
+.B \fI^W\fR
+Search (text/hex)
+.TP
+.B \fI^N\fR
+find Next
+.TP
+.B \fI^U\fR
+Undo
+.TP
+.B \fI^R\fR
+ASCII <=> EBCDIC
+.TP
+.B \fI^P\fR
+Switch Spacings
+.TP
+.B \fI^+\fR
+Binary Calculator
+
+.SH Author
+Adam Rogoyski <apoc@laker.net>
+.SH "See Also"
+od (1)
+.SH BUGS
+Editing disks is only supported in Linux and OpenBSD.
+
+Please email Adam Rogoyski <apoc@laker.net> with any bugs you might find.
+This man page is intentionally brief.  Please Read the included documentation
+in Texinfo format for additional information

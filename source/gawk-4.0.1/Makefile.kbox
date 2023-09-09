@@ -1,0 +1,29 @@
+all: gawk_package 
+
+VERSION=4.0.1
+
+STRIP=/home/kevin/lib/android-9-toolchain/bin/arm-linux-androideabi-strip
+
+gawk_package: gawk
+	mkdir -p contrib_image/usr/bin/
+	mkdir -p image/
+	mkdir -p image/usr/man/man1
+	cp -pru contrib_image/* image/
+	cp -p  gawk image/usr/bin/
+	cp -p  pgawk image/usr/bin/
+	$(STRIP) image/usr/bin/pgawk
+	$(STRIP) image/usr/bin/gawk
+	cp -p doc/gawk.1 image/usr/man/man1
+	mkdir -p out
+	tar cfz out/data.tar.gz -C image "." 
+	tar cfz out/control.tar.gz ./control 
+	echo "2.0" > out/debian-binary
+	rm -f gawk_4.0.1_kbox.deb
+	ar rcs gawk_4.0.1_kbox.deb out/debian-binary out/data.tar.gz out/control.tar.gz 
+	cp gawk_4.0.1_kbox.deb ../../out
+
+
+gawk: 
+	make 
+
+

@@ -1,0 +1,3 @@
+utimensat.lo: utimensat.c ../config.h
+
+../config.h:

@@ -1,0 +1,3 @@
+_xftw.lo: _xftw.c ../config.h
+
+../config.h:

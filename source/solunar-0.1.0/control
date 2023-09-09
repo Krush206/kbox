@@ -1,0 +1,7 @@
+Package: solunar 
+Version: 0.1.0 
+Section: utilities 
+Priority: optional
+Architecture: arm
+Depends:
+Description: A utility for showing sun- and moon-related times and events 

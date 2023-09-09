@@ -1,0 +1,38 @@
+new moons
+Sort city list
+
+list-named-days works gives a list from jan-1 to dec-31 in the specified
+year, or the current year if none set. The rest of the date information
+is ignored. To get the days for a specific year you can do, for example,
+
+solunar --list-named-days --datetime 1#2013
+
+Note all dates and times, both specified and output, are local to the home
+locale, or the city specified by --city, unless --utc is given. The --utc
+switch affects both input and output. All dates entered and output will
+(or at least should) take DST into account where the zone uses it. No
+DST information is used when --utc is set.
+
+If not time is set, assumes 2am. Technically the day starts at midnight,
+but using 2am makes it less likely that the user will be surprised by
+DST changes putting giving results for the previous day
+
+Times of full moons are accurate to within about ten minutes either side, 
+as are times of equinoxes, etc.
+
+Harvest moon and hunter's moon
+These are the full moon nearest the autumnal equinox and the full moon
+immediately after it. They are distinguished from other full moons by
+there being no substantial period of dark between sunset and moonrise.
+In addition, these moons often look larger, owing to atmospheric
+effects. Of course, like all full moons they are only noticeable if the
+weather conditions allow for it. 
+
+Moon phase
+This is reported as 0-1, where 0 and 1 are both new moon, and 0.5 is full.
+
+Solstices
+Summar and winter are in terms of the northern hemisphere
+
+Aphelion/Perihelion
+Hard to get these nearer that +/- 30 minutes or so

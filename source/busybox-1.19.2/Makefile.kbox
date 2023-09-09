@@ -1,0 +1,7 @@
+all:
+	make -f Makefile 
+	cp -p busybox ../../app/libs/armeabi/libbusybox.so
+	cp -p busybox ../../app_1_0_48_2/libs/armeabi/libbusybox.so
+
+clean:
+	make -f Makefile clean

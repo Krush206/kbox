@@ -1,0 +1,3 @@
+__getcwd_chk.lo: __getcwd_chk.c ../config.h
+
+../config.h:

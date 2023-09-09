@@ -1,0 +1,3 @@
+__fxstatat64.lo: __fxstatat64.c ../config.h
+
+../config.h:

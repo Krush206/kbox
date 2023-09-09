@@ -1,0 +1,3 @@
+ulckpwdf.lo: ulckpwdf.c ../config.h
+
+../config.h:

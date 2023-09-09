@@ -1,0 +1,3 @@
+glob_pattern_p.lo: glob_pattern_p.c ../config.h
+
+../config.h:

@@ -1,0 +1,18 @@
+#!/system/bin/sh
+PATH=$KBOX/bin:$PATH
+export PATH KBOX HOME
+
+if $KBOX/bin/busybox [ ! -f "$KBOX/bin/ls" ]; then
+  echo Setting up busbox for first run
+  for f in `$KBOX/bin/busybox --list`; do
+    $KBOX/bin/busybox ln -sf $KBOX/bin/busybox $KBOX/bin/$f;
+  done
+fi
+
+if $KBOX/bin/busybox [ ! -f "$KBOX/etc/profile" ]; then
+  echo Unpacking base system for first run
+  $KBOX/bin/busybox gunzip -c -f $KBOX/../lib/libbase.so | $KBOX/bin/busybox tar -xvf - -C $KBOX
+fi
+
+exec $KBOX/bin/busybox bash -c $KBOX/bin/shell_wrapper.sh 
+

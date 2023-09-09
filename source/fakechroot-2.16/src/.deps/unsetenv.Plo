@@ -1,0 +1,3 @@
+unsetenv.lo: unsetenv.c ../config.h
+
+../config.h:

@@ -1,0 +1,3 @@
+bindtextdomain.lo: bindtextdomain.c ../config.h
+
+../config.h:

@@ -1,0 +1,3 @@
+symlinkat.lo: symlinkat.c ../config.h
+
+../config.h:

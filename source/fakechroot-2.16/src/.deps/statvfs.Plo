@@ -1,0 +1,3 @@
+statvfs.lo: statvfs.c ../config.h
+
+../config.h:
